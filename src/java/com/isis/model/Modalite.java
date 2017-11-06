@@ -1,0 +1,76 @@
+package com.isis.model;
+
+import java.io.Serializable;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
+public class Modalite implements Serializable {
+
+	private static final long serialVersionUID = 4387250849888057527L;
+
+	@Id
+        @Column
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int id;
+        
+        @Column 
+        private String code;
+        
+	@Column
+	private String nom;
+	@Column
+	private String pacs;
+	@Column
+	private String link;
+	
+
+// CONSTRUCTOR
+	public Modalite() {
+		super();
+	}
+
+	public Modalite(String nom, String pacs, String link) {
+		this.nom = nom;
+		this.pacs = pacs;
+		this.link = link;
+	}
+
+// GETTER SETTER
+
+	public String getCode() {
+		return code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
+	}
+
+	public String getNom() {
+		return nom;
+	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
+	public String getPacs() {
+		return pacs;
+	}
+
+	public void setPacs(String pacs) {
+		this.pacs = pacs;
+	}
+
+	public String getLink() {
+		return link;
+	}
+
+	public void setLink(String link) {
+		this.link = link;
+	}
+
+}
