@@ -6,12 +6,10 @@ import javax.persistence.EntityManagerFactory;
 
 public class ModaliteService {
 
-    EntityManagerFactory fact;
     EntityManager em;
 
-    public ModaliteService(EntityManagerFactory fact) {
-        this.fact = fact;
-        this.em = fact.createEntityManager();
+    public ModaliteService(EntityManager em) {
+        this.em = em;
     }
 
     public void newModalite(Modalite m) {

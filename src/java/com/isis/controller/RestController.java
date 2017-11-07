@@ -32,53 +32,60 @@ public class RestController {
     ModaliteService modaliteService;
 
     public RestController() {
-        acteService = new ActeService(DatabaseUtils);
-        patientService = new PatientService(DatabaseUtils.fact());
-        modaliteService = new ModaliteService(DatabaseUtils.fact());
+//        acteService = new ActeService(DatabaseUtils.fact());
+//        patientService = new PatientService(DatabaseUtils.fact());
+//        modaliteService = new ModaliteService(DatabaseUtils.fact());
     }
+
+//    @GET
+//    @Path("actes")
+//    @Produces("application/json")
+//    public List<Acte> getAllActe(@DefaultValue("") @QueryParam("iep") int adm) {
+//        return acteService.getAll();
+//    }
+//
+//    @GET
+//    @Path("actes/{id}")
+//    @Produces("application/json")
+//    public Acte getActe(@PathParam("id") int id) {
+//        return acteService.getById(id);
+//    }
+//
+//    @POST
+//    @Path("actes")
+//    @Consumes(MediaType.APPLICATION_JSON)
+//    @Produces("application/json")
+//    public void newActe(Acte a) {
+//        acteService.newActe(a);
+//    }
+//
+//    @POST
+//    @Path("modalites")
+//    @Consumes(MediaType.APPLICATION_JSON)
+//    @Produces("application/json")
+//    public void newModalite(Modalite a) {
+//        modaliteService.newModalite(a);
+//    }
+//
+//    @GET
+//    @Path("patients/{iep}")
+//    @Produces("application/json")
+//    public Patient getPatient(@PathParam("iep") int iep) {
+//        return patientService.getByIEP(iep);
+//    }
+
+//    @GET
+//    @Path("patients")
+//    @Produces("application/json")
+//    public List<Patient> getAllPatient() {
+//        return patientService.getAll();
+//    }
 
     @GET
-    @Path("actes")
+    @Path("")
     @Produces("application/json")
-    public List<Acte> getAllActe(@DefaultValue("") @QueryParam("iep") int adm) {
-        return acteService.getAll();
+    public String getHello() {
+        return "coucou";
     }
-
-    @GET
-    @Path("actes/{id}")
-    @Produces("application/json")
-    public Acte getActe(@PathParam("id") int id) {
-        return acteService.getById(id);
-    }
-
-    @POST
-    @Path("actes")
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Produces("application/json")
-    public void newActe(Acte a) {
-        acteService.newActe(a);
-    }
-
-    @POST
-    @Path("modalites")
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Produces("application/json")
-    public void newModalite(Modalite a) {
-        modaliteService.newModalite(a);
-    }
-
-    @GET
-    @Path("patients/{iep}")
-    @Produces("application/json")
-    public Patient getPatient(@PathParam("iep") int iep) {
-        return patientService.getByIEP(iep);
-    }
-
-    @GET
-    @Path("patients")
-    @Produces("application/json")
-    public List<Patient> getAllPatient() {
-        return patientService.getAll();
-    }
-
+    
 }

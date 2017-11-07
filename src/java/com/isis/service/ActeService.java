@@ -11,12 +11,10 @@ import javax.persistence.TypedQuery;
 
 public class ActeService {
 
-    EntityManagerFactory fact;
     EntityManager em;
 
-    public ActeService(EntityManagerFactory fact) {
-        this.fact = fact;
-        this.em = fact.createEntityManager();
+    public ActeService(EntityManager em) {
+        this.em = em;
     }
 
     public void newActe(Acte a) {
@@ -63,6 +61,12 @@ public class ActeService {
         TypedQuery<Acte> query = em.createQuery("SELECT a FROM Acte a", Acte.class);
         List<Acte> res = query.getResultList();
         return res;
+    }
+    
+    public void removeAll(){
+        em.getTransaction().begin();
+        em.createQuery("DELETE FROM Acte").executeUpdate();
+        em.getTransaction().commit();
     }
 
 }

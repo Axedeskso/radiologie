@@ -8,12 +8,10 @@ import javax.persistence.TypedQuery;
 
 public class PatientService {
 
-    EntityManagerFactory fact;
     EntityManager em;
 
-    public PatientService(EntityManagerFactory fact) {
-        this.fact = fact;
-        this.em = fact.createEntityManager();
+    public PatientService(EntityManager em) {
+        this.em = em;
     }
     
     public Patient newPatient(String nom, String prenom, String ipp, String iep){
