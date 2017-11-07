@@ -2,6 +2,7 @@ package com.isis.model;
 
 import java.sql.Timestamp;
 import java.util.List;
+import javax.persistence.CascadeType;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -21,7 +22,7 @@ public class Acte {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int iDActe;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Patient patient;
 
     @OneToMany
@@ -33,7 +34,8 @@ public class Acte {
     @Column(name = "heure")
     private Timestamp heure;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
+
     private CCAM ccam;
 
     public Acte() {

@@ -55,7 +55,7 @@ public class ActeTest {
     public void acte() {
         clean();
         ActeService serv = new ActeService(DatabaseUtils.fact());
-        Patient a1 = new Patient("McLANE", "John", 118, 218);
+        Patient a1 = new Patient("MacGregor", "Emmanuel", 118, 55);
         CCAM c1 = new CCAM("ccamCode", "NomCCAM", (float) 15.50);
         Acte a = serv.newActe(a1, null, null, c1);
         assertNotNull(a); 
@@ -63,8 +63,9 @@ public class ActeTest {
         assert(!res.isEmpty());
         assert(res.size() == 1);  
         
-//        Modalite r = serv.getByPacs("testpacs");
-//        assert(r!= null && r.getPacs().equals("testpacs"));
+        List<Acte> r = serv.getByIEP(55);
+        assert(!r.isEmpty());
+        assert(r.size() == 1); 
     }
 }
     
