@@ -21,9 +21,9 @@ public class Patient {
     @Column
     private String prenom;
     @Column
-    private String IPP;
+    private String ipp;
     @Column
-    private String IEP;
+    private String iep;
 
     public Patient(){
     }
@@ -31,8 +31,8 @@ public class Patient {
     public Patient(String nom, String prenom, String IPP, String IEP) {
         this.nom = nom;
         this.prenom = prenom;
-        this.IPP = IPP;
-        this.IEP = IEP;
+        this.ipp = IPP;
+        this.iep = IEP;
     }
 
     public int getId() {
@@ -59,19 +59,19 @@ public class Patient {
         this.prenom = prenom;
     }
 
-    public String getIPP() {
-        return IPP;
+    public String getIpp() {
+        return ipp;
     }
 
-    public void setIPP(String IPP) {
-        this.IPP = IPP;
+    public void setIpp(String ipp) {
+        this.ipp = ipp;
     }
 
-    public String getIEP() {
-        return IEP;
+    public String getIep() {
+        return iep;
     }
 
-    public void setIEP(String IEP) {
-        this.IEP = IEP;
+    public void setIep(String iep) {
+        this.iep = iep;
     }
 }
