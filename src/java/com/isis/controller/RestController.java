@@ -21,7 +21,7 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.UriInfo;
 
-@Path("generic")
+@Path("")
 public class RestController {
 
     @Context
@@ -32,9 +32,9 @@ public class RestController {
     ModaliteService modaliteService;
 
     public RestController() {
-//        acteService = new ActeService(DatabaseUtils.fact());
-//        patientService = new PatientService(DatabaseUtils.fact());
-//        modaliteService = new ModaliteService(DatabaseUtils.fact());
+        acteService = new ActeService(DatabaseUtils.fact());
+        patientService = new PatientService(DatabaseUtils.fact());
+        modaliteService = new ModaliteService(DatabaseUtils.fact());
     }
 
 //    @GET
@@ -66,20 +66,20 @@ public class RestController {
 //    public void newModalite(Modalite a) {
 //        modaliteService.newModalite(a);
 //    }
-//
-//    @GET
-//    @Path("patients/{iep}")
-//    @Produces("application/json")
-//    public Patient getPatient(@PathParam("iep") int iep) {
-//        return patientService.getByIEP(iep);
-//    }
 
-//    @GET
-//    @Path("patients")
-//    @Produces("application/json")
-//    public List<Patient> getAllPatient() {
-//        return patientService.getAll();
-//    }
+    @GET
+    @Path("patients/{iep}")
+    @Produces("application/json")
+    public Patient getPatient(@PathParam("iep") int iep) {
+        return patientService.getByIEP(iep);
+    }
+
+    @GET
+    @Path("patients")
+    @Produces("application/json")
+    public List<Patient> getAllPatient() {
+        return patientService.getAll();
+    }
 
     @GET
     @Path("")

@@ -25,6 +25,9 @@ public class Patient {
     @Column
     private String IEP;
 
+    public Patient(){
+    }
+    
     public Patient(String nom, String prenom, String IPP, String IEP) {
         this.nom = nom;
         this.prenom = prenom;

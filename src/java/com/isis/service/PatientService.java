@@ -11,6 +11,7 @@ public class PatientService {
     EntityManager em;
 
     public PatientService(EntityManager em) {
+        System.out.println("EM : " + em == null);
         this.em = em;
     }
     
