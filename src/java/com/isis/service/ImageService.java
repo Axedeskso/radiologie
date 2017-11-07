@@ -1,12 +1,16 @@
 package com.isis.service;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 
 public class ImageService {
     EntityManager em;
 
-    public ImageService(EntityManagerFactory fact) {
+    public ImageService(EntityManager em) {
         this.em = em;
     }
+    
+    public ImageService(){
+    }
+    
+    
 }

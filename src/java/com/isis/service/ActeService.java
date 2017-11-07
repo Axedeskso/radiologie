@@ -6,7 +6,6 @@ import com.isis.model.Patient;
 import java.sql.Timestamp;
 import java.util.List;
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 import javax.persistence.TypedQuery;
 
 public class ActeService {
@@ -27,36 +26,22 @@ public class ActeService {
         em.getTransaction().commit();
     }
 
-    public void newActe(Patient p, Timestamp date, Timestamp heure, CCAM ccam) {
+    public Acte newActe(Patient p, Timestamp date, Timestamp heure, CCAM ccam) {
         Acte a = new Acte(p, date, heure, ccam);
         em.getTransaction().begin();
         em.persist(a);
         em.getTransaction().commit();
+        return a;
     }
 
-    public void remove(int id) {
-        Acte cr = em.find(Acte.class, id);
-        em.getTransaction().begin();
-        em.remove(cr);
-        em.getTransaction().commit();
-
-    }
-
-    public void edit(Acte cr) {
-        em.getTransaction().begin();
-        em.merge(cr);
-        em.getTransaction().commit();
-
-    }
-
+    //GET
     public Acte getById(int id) {
         Acte res = em.find(Acte.class, id);
         return res;
     }
 
     public List<Acte> getByIEP(int iep) {
-        TypedQuery<Acte> query = em.createQuery("SELECT c FROM Acte a JOIN a.patient p WHERE p.iep = :iep", Acte.class)
-                .setParameter("iep", iep);
+        TypedQuery<Acte> query = em.createQuery("SELECT c FROM Acte a JOIN a.patient p WHERE p.iep = :iep", Acte.class).setParameter("iep", iep);
         List<Acte> res = query.getResultList();
         return res;
     }
@@ -65,6 +50,21 @@ public class ActeService {
         TypedQuery<Acte> query = em.createQuery("SELECT a FROM Acte a", Acte.class);
         List<Acte> res = query.getResultList();
         return res;
+    }
+    
+    //UPDATE
+    public void edit(Acte cr) {
+        em.getTransaction().begin();
+        em.merge(cr);
+        em.getTransaction().commit();
+    }
+    
+    //DELETE
+    public void remove(int id) {
+        Acte cr = em.find(Acte.class, id);
+        em.getTransaction().begin();
+        em.remove(cr);
+        em.getTransaction().commit();
     }
     
     public void removeAll(){

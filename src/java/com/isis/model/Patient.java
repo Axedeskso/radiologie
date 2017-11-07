@@ -21,14 +21,14 @@ public class Patient {
     @Column
     private String prenom;
     @Column
-    private String ipp;
+    private int ipp;
     @Column
-    private String iep;
+    private int iep;
 
     public Patient(){
     }
     
-    public Patient(String nom, String prenom, String IPP, String IEP) {
+    public Patient(String nom, String prenom, int IPP, int IEP) {
         this.nom = nom;
         this.prenom = prenom;
         this.ipp = IPP;
@@ -59,19 +59,19 @@ public class Patient {
         this.prenom = prenom;
     }
 
-    public String getIpp() {
+    public int getIpp() {
         return ipp;
     }
 
-    public void setIpp(String ipp) {
+    public void setIpp(int ipp) {
         this.ipp = ipp;
     }
 
-    public String getIep() {
+    public int getIep() {
         return iep;
     }
 
-    public void setIep(String iep) {
+    public void setIep(int iep) {
         this.iep = iep;
     }
 }

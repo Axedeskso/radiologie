@@ -6,19 +6,19 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "MODALITE")
 public class Modalite implements Serializable {
-
-	private static final long serialVersionUID = 4387250849888057527L;
 
 	@Id
         @Column
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
         
-        @Column 
-        private String code;
+//        @Column 
+//        private String code;
         
 	@Column
 	private String nom;
@@ -41,13 +41,13 @@ public class Modalite implements Serializable {
 
 // GETTER SETTER
 
-	public String getCode() {
-		return code;
-	}
-
-	public void setCode(String code) {
-		this.code = code;
-	}
+//	public String getCode() {
+//		return code;
+//	}
+//
+//	public void setCode(String code) {
+//		this.code = code;
+//	}
 
 	public String getNom() {
 		return nom;

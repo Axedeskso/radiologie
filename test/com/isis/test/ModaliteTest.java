@@ -1,10 +1,8 @@
 package com.isis.test;
 
 import com.isis.configuration.DatabaseUtils;
-import com.isis.model.Acte;
-import com.isis.model.Patient;
-import com.isis.service.ActeService;
-import com.isis.service.PatientService;
+import com.isis.model.Modalite;
+import com.isis.service.ModaliteService;
 import java.util.List;
 import javax.persistence.EntityManagerFactory;
 import org.junit.After;
@@ -14,12 +12,11 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-
-public class PatientTest {
+public class ModaliteTest {
     
     static EntityManagerFactory fact;
     
-    public PatientTest(){}
+    public ModaliteTest(){}
     
     @BeforeClass
     public static void setUpClass() {
@@ -45,25 +42,25 @@ public class PatientTest {
     
     
     public void clean() {
-        ActeService serv = new ActeService(DatabaseUtils.fact());
+        ModaliteService serv = new ModaliteService(DatabaseUtils.fact());
         serv.removeAll();
-        List<Acte> res = serv.getAll();
+        List<Modalite> res = serv.getAll();
         assert(res.isEmpty());
     }
     
         
     @Test
-    public void patient() {
+    public void modalite() {
         clean();
-        PatientService serv = new PatientService(DatabaseUtils.fact());
-        Patient cr = serv.newPatient("Axel", "A", 123456, 987654);
-        assertNotNull(cr); 
-        List<Patient> res = serv.getAll();
+        ModaliteService serv = new ModaliteService(DatabaseUtils.fact());
+        Modalite m = serv.newModalite("testmod", "testpacs", "/resources/testpacs");
+        assertNotNull(m); 
+        List<Modalite> res = serv.getAll();
         assert(!res.isEmpty());
-        assert(res.size() == 1);
+        assert(res.size() == 1);  
         
-        Patient r = serv.getByIEP(987654);
-        assert(r!= null && r.getIep() == 987654);
+        Modalite r = serv.getByPacs("testpacs");
+        assert(r!= null && r.getPacs().equals("testpacs"));
     }
 }
     

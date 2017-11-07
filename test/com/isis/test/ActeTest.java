@@ -2,9 +2,9 @@ package com.isis.test;
 
 import com.isis.configuration.DatabaseUtils;
 import com.isis.model.Acte;
+import com.isis.model.CCAM;
 import com.isis.model.Patient;
 import com.isis.service.ActeService;
-import com.isis.service.PatientService;
 import java.util.List;
 import javax.persistence.EntityManagerFactory;
 import org.junit.After;
@@ -14,12 +14,11 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-
-public class PatientTest {
+public class ActeTest {
     
     static EntityManagerFactory fact;
     
-    public PatientTest(){}
+    public ActeTest(){}
     
     @BeforeClass
     public static void setUpClass() {
@@ -53,17 +52,19 @@ public class PatientTest {
     
         
     @Test
-    public void patient() {
+    public void acte() {
         clean();
-        PatientService serv = new PatientService(DatabaseUtils.fact());
-        Patient cr = serv.newPatient("Axel", "A", 123456, 987654);
-        assertNotNull(cr); 
-        List<Patient> res = serv.getAll();
+        ActeService serv = new ActeService(DatabaseUtils.fact());
+        Patient a1 = new Patient("McLANE", "John", 118, 218);
+        CCAM c1 = new CCAM("ccamCode", "NomCCAM", (float) 15.50);
+        Acte a = serv.newActe(a1, null, null, c1);
+        assertNotNull(a); 
+        List<Acte> res = serv.getAll();
         assert(!res.isEmpty());
-        assert(res.size() == 1);
+        assert(res.size() == 1);  
         
-        Patient r = serv.getByIEP(987654);
-        assert(r!= null && r.getIep() == 987654);
+//        Modalite r = serv.getByPacs("testpacs");
+//        assert(r!= null && r.getPacs().equals("testpacs"));
     }
 }
     

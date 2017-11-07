@@ -23,19 +23,19 @@ public class Image {
     private Timestamp heure;
 
     @Column
-    private String link;
+    private byte[] image;
 
 // CONSTRUCTOR
     public Image() {
         super();
     }
 
-    public Image(int iDImage, Timestamp date, Timestamp heure, String link) {
+    public Image(int iDImage, Timestamp date, Timestamp heure, byte[] image) {
         super();
         this.iDImage = iDImage;
         this.date = date;
         this.heure = heure;
-        this.link = link;
+        this.image = image;
     }
 
 // GETTER SETTER
@@ -63,12 +63,12 @@ public class Image {
         this.heure = heure;
     }
 
-    public String getLink() {
-        return link;
+    public byte[] getImage() {
+        return image;
     }
 
-    public void setLink(String link) {
-        this.link = link;
+    public void setImage(byte[] image) {
+        this.image = image;
     }
 }
 

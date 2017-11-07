@@ -18,7 +18,13 @@ public class PatientService {
     public PatientService(){
     }
     
-    public Patient newPatient(String nom, String prenom, String ipp, String iep){
+    public void newPatient(Patient p) {
+        em.getTransaction().begin();
+        em.persist(p);
+        em.getTransaction().commit();
+    }
+    
+    public Patient newPatient(String nom, String prenom, int ipp, int iep){
         Patient p = new Patient(nom, prenom, ipp, iep);
         em.getTransaction().begin();
         em.persist(p);
@@ -26,9 +32,8 @@ public class PatientService {
         return p;
     }
 
-    public Patient getByIEP(String iep) {
-        TypedQuery<Patient> res = em.createQuery("SELECT p FROM Patient p WHERE p.IEP = :iep",Patient.class).setParameter("iep", iep);
-       
+    public Patient getByIEP(int iep) {
+        TypedQuery<Patient> res = em.createQuery("SELECT p FROM Patient p WHERE p.iep = :iep",Patient.class).setParameter("iep", iep);
         return res.getSingleResult();
     }
 
