@@ -70,7 +70,8 @@ public class RestController {
     @GET
     @Path("patients/{iep}")
     @Produces("application/json")
-    public Patient getPatient(@PathParam("iep") int iep) {
+    public Patient getPatient(@PathParam("iep") String iep) {
+        System.err.println("IEP du patient :" +iep);
         return patientService.getByIEP(iep);
     }
 
@@ -85,7 +86,7 @@ public class RestController {
     @Path("")
     @Produces("application/json")
     public String getHello() {
-        return "coucou";
+        return "";
     }
     
 }

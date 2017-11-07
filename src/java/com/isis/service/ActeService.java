@@ -16,6 +16,10 @@ public class ActeService {
     public ActeService(EntityManager em) {
         this.em = em;
     }
+    
+    public ActeService(){
+        
+    }
 
     public void newActe(Acte a) {
         em.getTransaction().begin();

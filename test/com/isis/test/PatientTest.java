@@ -52,7 +52,7 @@ public class PatientTest {
     // TODO add test methods here.
     // The methods must be annotated with annotation @Test. For example:
     
-    @Test
+    
     public void clean() {
         ActeService serv = new ActeService(DatabaseUtils.fact());
         serv.removeAll();
@@ -65,69 +65,17 @@ public class PatientTest {
     public void patient() {
         clean();
         PatientService serv = new PatientService(DatabaseUtils.fact());
-        Patient cr = serv.newPatient("Axel", "A", "486764", "4658745");
+        Patient cr = serv.newPatient("Axel", "A", "123456", "987654");
         assertNotNull(cr); 
         List<Patient> res = serv.getAll();
         assert(!res.isEmpty());
         assert(res.size() == 1);
-      /*
-        res = serv.getAllCrayons();
-        assert(!res.isEmpty());
-        assert(res.size() == 3);*/
         
+        Patient r = serv.getByIEP("987654");
+        
+        assert(r!= null && r.getIEP().equals("987654"));
+        
+      
     }
-    /*
-    @Test
-    public void boite() {
-        clean();
-        Services serv = new Services(DatabaseUtils.fact());
-        List<Crayon> liste = new ArrayList<>();
-        String[] couleurs = { "rouge", "jaune", "vert" };
-        for (String c : couleurs) {
-            Crayon cr = new Crayon();
-            cr.setCouleur(c);
-            liste.add(cr);
-        }
-        Boite b = serv.newBoite(liste);
-        assertNotNull(b);
-        
-        List<Boite> boites = serv.getBoitesByCouleurDeCrayon("vert");
-        assert(!boites.isEmpty());
-        assert(!boites.get(0).getCrayons().isEmpty());
-        System.out.println(boites.get(0).getCrayons().get(2).getCouleur());
-        assert(boites.get(0).getCrayons().size() == 3);
-        
-    }
-    
-    @Test
-    public void boite2() {
-        clean();
-        Services serv = new Services(DatabaseUtils.fact());
-        
-        List<Crayon> liste = new ArrayList<>();
-        String[] couleurs = { "rouge", "jaune", "vert" };
-        for (String c : couleurs) {
-            Crayon cr = new Crayon();
-            cr.setCouleur(c);
-            liste.add(cr);
-        }
-        Boite b = serv.newBoite(liste);
-        assertNotNull(b);
-        
-        Crayon cr = new Crayon();
-        cr.setCouleur("vert");
-        
-        b.getCrayons().add(cr);
-        
-        
-        List<Boite> boites = serv.getBoitesByCouleurDeCrayon("vert");
-        assert(!boites.isEmpty());
-        assert(!boites.get(0).getCrayons().isEmpty());
-        assert(boites.get(0).getCrayons().size() == 4);
-        
-        serv.updateBoite(b);
-        
-        
-    }*/
 }
     

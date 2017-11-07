@@ -15,6 +15,9 @@ public class PatientService {
         this.em = em;
     }
     
+    public PatientService(){
+    }
+    
     public Patient newPatient(String nom, String prenom, String ipp, String iep){
         Patient p = new Patient(nom, prenom, ipp, iep);
         em.getTransaction().begin();
@@ -23,9 +26,10 @@ public class PatientService {
         return p;
     }
 
-    public Patient getByIEP(int iep) {
-        Patient res = em.find(Patient.class, iep);
-        return res;
+    public Patient getByIEP(String iep) {
+        TypedQuery<Patient> res = em.createQuery("SELECT p FROM Patient p WHERE p.IEP = :iep",Patient.class).setParameter("iep", iep);
+       
+        return res.getSingleResult();
     }
 
     public List<Patient> getAll() {
