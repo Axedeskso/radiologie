@@ -44,6 +44,6 @@ angular.module('monApp').config(['$routeProvider', function routeConfig($routePr
                     controller: "CCAMController as ctrl",
                     templateUrl: 'listeCcam.html'
                 })
-                .otherwise({redirectTo: '/patients'});
+                .otherwise({redirectTo: '/'});
     }]);
 

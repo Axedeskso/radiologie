@@ -1,24 +1,39 @@
 <!DOCTYPE html>
 
-<h3>Liste des patients :</h3> 
-
-<table>
-    <thead>
-        <th> Nom </th>
-        <th> Prenom </th>
-    </thead>
-    <tr ng-repeat='p in ctrl.p'>
-        <td> {{ p.nom }} </td>
-        <td> {{ p.prenom }} </td>
-        <td> <a ng-href="patients/edit/{{p.id}}"/> Edit </a>
-        <td> <input type="button" value="delete" ng-click="ctrl.delete(p)"/> 
-    </tr>
- 
-    
-</table>
-   
-<a ng-href="#/crayon/new"/> Nouveau patient </a>
-
-<br/>
-
-<a href="#/boites">Liste des boites</a>
+<div class="row">
+    <div class="col-xs-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-8"><h4>Liste des admissions</h4></div>
+                    <div class="col-xs-4"><a class="btn btn-primary btn-block" ng-href="#/patients/new" role="button"> Nouveau patient </a></div>
+                </div>
+            </div>
+            <div class="panel-body">
+            <table class="table table-striped">
+                <thead >
+                    <tr>
+                        <th>IPP</th>
+                        <th>IEP</th>
+                        <th>Nom</th>
+                        <th>Prenom</th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="p in ctrl.p">
+                        <td> {{ p.ipp}} </td>
+                        <td> {{ p.iep}} </td>
+                        <td> {{ p.nom}} </td>
+                        <td> {{ p.prenom}} </td>
+                        <td> <a class="btn btn-primary" ng-href="#/patients/{{p.iep}}" ><span  class="glyphicon glyphicon-eye-open"></span> </a></td>
+                        <td> <a class="btn btn-primary" ng-href="patients/edit/{{p.iep}}"><span  class="glyphicon glyphicon-pencil"></span></a>
+                        <td> <a class="btn btn-primary" ng-click="ctrl.delete(p)"><span  class="glyphicon glyphicon-remove"></span></a></td> 
+                    </tr>
+            </table>
+            </div>
+        </div>
+    </div>
+</div>

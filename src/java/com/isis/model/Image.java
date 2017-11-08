@@ -30,9 +30,8 @@ public class Image {
         super();
     }
 
-    public Image(int iDImage, Timestamp date, Timestamp heure, byte[] image) {
+    public Image(Timestamp date, Timestamp heure, byte[] image) {
         super();
-        this.iDImage = iDImage;
         this.date = date;
         this.heure = heure;
         this.image = image;
