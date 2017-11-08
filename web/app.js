@@ -11,6 +11,10 @@ angular.module('monApp').config(['$routeProvider', function routeConfig($routePr
                     controller: "PatientNewController as ctrl",
                     templateUrl: 'newPatient.html'
                 })
+                .when('/patients/edit/:id', {
+                    controller: "PatientNewController as ctrl",
+                    templateUrl: 'editPatient.html'
+                })
                 .when('/modalites/edit/:id', {
                     controller: "ModaliteEditController as ctrl",
                     templateUrl: 'editModalite.html'
