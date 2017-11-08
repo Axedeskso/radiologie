@@ -41,7 +41,7 @@ public class ActeService {
     }
 
     public List<Acte> getByIEP(int iep) {
-        TypedQuery<Acte> query = em.createQuery("SELECT c FROM Acte a JOIN a.patient p WHERE p.iep = :iep", Acte.class).setParameter("iep", iep);
+        TypedQuery<Acte> query = em.createQuery("SELECT a FROM Acte a JOIN a.patient p WHERE p.iep = :iep", Acte.class).setParameter("iep", iep);
         List<Acte> res = query.getResultList();
         return res;
     }

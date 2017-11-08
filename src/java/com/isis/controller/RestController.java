@@ -66,18 +66,9 @@ public class RestController {
     @GET
     @Path("patients/{iep}/actes")
     @Produces("application/json")
-    public String getActesByIep(@PathParam("iep") int iep) {
-        return "patientService.getByIEP(iep)";
+    public List<Acte> getActesByIep(@PathParam("iep") int iep) {
+        return acteService.getByIEP(iep);
     }
-    
-    @GET
-    @Path("patients/{iep}/actes/{id}")
-    @Produces("application/json")
-    public String getActeByIep(@PathParam("iep") int iep) {
-        return "patientService.getByIEP(iep)";
-    }
-
-    
     
     @GET
     @Path("ccam")
@@ -109,5 +100,4 @@ public class RestController {
     public void newModalite(Modalite a) {
         modaliteService.newModalite(a);
     }
-    
 }
