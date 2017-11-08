@@ -1,22 +1,23 @@
 <!DOCTYPE html>
 
-<h3>Liste des crayons :</h3> 
+<h3>Liste des patients :</h3> 
 
 <table>
-    <tr>
-        <th> Id </th>
-        <th> Couleur </th>
-    <tr ng-repeat='cr in ctrl.crayons'>
-        <td> {{ cr.id }} </td>
-        <td> {{ cr.couleur }} </td>
-        <td> <a ng-href="#/crayon/edit/{{cr.id}}"/> Edit </a>
-        <td> <input type="button" value="delete" ng-click="ctrl.delete(cr)"/> 
+    <thead>
+        <th> Nom </th>
+        <th> Prenom </th>
+    </thead>
+    <tr ng-repeat='p in ctrl.p'>
+        <td> {{ p.nom }} </td>
+        <td> {{ p.prenom }} </td>
+        <td> <a ng-href="patients/edit/{{p.id}}"/> Edit </a>
+        <td> <input type="button" value="delete" ng-click="ctrl.delete(p)"/> 
     </tr>
  
     
 </table>
    
-<a ng-href="#/crayon/new"/> Nouveau crayon </a>
+<a ng-href="#/crayon/new"/> Nouveau patient </a>
 
 <br/>
 

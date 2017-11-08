@@ -1,6 +1,33 @@
 
 angular.module('monApp')
 
+        .controller('PatientController', ['Patients',
+            function (Patients) {
+                this.p = Patients.query();
+                this.delete = function (b) {
+                    // appel DELETE asynchrone au service web sur /boites/{id}
+                    Patients.delete(b);
+                    // remet à jour le tableau local des boites en suprimant l'élément effacé
+                    this.p.splice(this.p.indexOf(b), 1);
+                };
+            }
+        ])
+        
+        .controller('CCAMController', ['ccam',
+            function (ccam) {
+                this.ccam = ccam.query();
+                this.delete = function (b) {
+                    // appel DELETE asynchrone au service web sur /boites/{id}
+                    ccam.delete(b);
+                    // remet à jour le tableau local des boites en suprimant l'élément effacé
+                    this.p.splice(this.p.indexOf(b), 1);
+                };
+            }
+        ])
+
+
+////////////////////// OLD
+
         .controller('CrayonsController', ['Crayons',
             function (Crayons) {
                 this.crayons = Crayons.query();
@@ -66,22 +93,23 @@ angular.module('monApp')
                 // paramètre ?type="sansboites" qui lui dit de faire cela. 
                 // Or tous les paramètres que l'on passe à la méthode .query() ci-dessous sont ajoutés à l'URL 
                 // sous la forme ?prop1=val1&prop2=val2, d'où la syntaxe utilisée 
-                self.crayons =  Crayons.query({type: "sansboites"}); 
+                self.crayons = Crayons.query({type: "sansboites"});
                 self.update = function () {
-                    if (self.b.crayons === undefined) self.b.crayons = [];
+                    if (self.b.crayons === undefined)
+                        self.b.crayons = [];
                     // ajoute le crayon à la liste des crayons de la boite
                     self.b.crayons.push(self.crayonSelect);
                     // supprime le crayon de la liste des crayons affectable
                     self.crayons.splice(self.crayons.indexOf(self.crayonSelect), 1);
-                  
+
                 };
-                self.deleteCrayonFromBoite = function(cr) {
+                self.deleteCrayonFromBoite = function (cr) {
                     // remet à jour le tableau des crayons de la boite en suprimant l'élément effacé
                     self.b.crayons.splice(self.b.crayons.indexOf(cr), 1);
                     // et en l'ajoutant à la liste des crayons disponibles
                     self.crayons.push(cr);
                 }
-                self.apply = function() {
+                self.apply = function () {
                     // on passe la boite au service web pour qu'il la sauve dans la base de données  
                     self.b.$save();
                 }
