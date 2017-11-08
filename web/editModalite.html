@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<div class="row">
+    <div class="col-xs-12">
+        <form novalidate class="simple-form">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-12"><h4>Edition de la modalité {{ ctrl.m.id }} - {{ ctrl.m.nom }}</h4></div>
+                </div>
+            </div>
+        
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-xs-6"><label>Nom</label></div>
+                <div class="col-xs-6"><input type="text" ng-model="ctrl.m.nom" /></div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6"><label>PACS</label></div>
+                <div class="col-xs-6"><input type="text" ng-model="ctrl.m.pacs" /></div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6"><label>Lien</label></div>
+                <div class="col-xs-6"><input type="text" ng-model="ctrl.m.link" /></div>
+            </div>
+        </div>
+        <div class="panel-footer">
+            <input type="submit" ng-click="ctrl.update()" value="Save" />
+        </div>
+            </div>
+        </form>
+    </div>
+</div>

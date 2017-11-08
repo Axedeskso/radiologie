@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<div class="row">
+    <div class="col-xs-12">
+        <form novalidate class="simple-form">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-xs-12"><h4>Nouveau patient</h4></div>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-xs-6"><label>Nom</label></div>
+                            <div class="col-xs-6"><input type="text" class="form-control" ng-model="ctrl.p.nom" /></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-6"><label>Prenom</label></div>
+                            <div class="col-xs-6"><input type="text" class="form-control" ng-model="ctrl.p.prenom" /></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-6"><label>IPP</label></div>
+                            <div class="col-xs-6"><input type="text" class="form-control" ng-model="ctrl.p.ipp" /></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-6"><label>IEP</label></div>
+                            <div class="col-xs-6"><input type="text" class="form-control" ng-model="ctrl.p.iep" /></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    <div class="row">
+                        <div class="col-xs-2"><a class="btn btn-danger" href="#/patients">Retour</a></div>
+                        <div class="col-xs-8"><div ng-show="ctrl.p.id">Création du patient d'identifiant {{ ctrl.p.id}} effectuée.</div></div>
+                        <div class="col-xs-2"><input type="submit" class="btn btn-success pull-right" ng-click="ctrl.update()" value="Enregistrer" /></div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

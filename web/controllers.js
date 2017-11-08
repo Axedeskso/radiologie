@@ -5,22 +5,61 @@ angular.module('monApp')
             function (Patients) {
                 this.p = Patients.query();
                 this.delete = function (b) {
-                    // appel DELETE asynchrone au service web sur /boites/{id}
                     Patients.delete(b);
-                    // remet à jour le tableau local des boites en suprimant l'élément effacé
                     this.p.splice(this.p.indexOf(b), 1);
                 };
             }
         ])
         
-        .controller('CCAMController', ['ccam',
-            function (ccam) {
-                this.ccam = ccam.query();
+        .controller('PatientNewController', ['Patients',
+            function (Patients) {
+                this.p = new Patients();
+                this.update = function () {
+                    this.p.$save();
+                };
+            }])
+        
+        
+        .controller('ModaliteController', ['Modalites',
+            function (Modalites) {
+                this.m = Modalites.query();
                 this.delete = function (b) {
                     // appel DELETE asynchrone au service web sur /boites/{id}
-                    ccam.delete(b);
+                    Modalites.delete(b);
                     // remet à jour le tableau local des boites en suprimant l'élément effacé
-                    this.p.splice(this.p.indexOf(b), 1);
+                    this.m.splice(this.m.indexOf(b), 1);
+                };
+            }
+        ])
+        
+        .controller('ModaliteNewController', ['Modalites',
+            function (Modalites) {
+                this.m = new Modalites();
+                this.update = function () {
+                    // appel POST asynchrone au service web sur /crayons
+                    this.m.$save();
+                };
+            }])
+        
+        .controller('ModaliteEditController', ['$routeParams', 'Modalites', '$location',
+            function ($routeParams, Modalites, $location) {
+                this.m = Modalites.get({id: $routeParams.id});
+                this.update = function () {
+                    // appel POST asynchrone au service web sur /crayons/{id} 
+                    this.m.$save();
+                    $location.path("/modalites")
+                };
+            }
+        ])
+        
+        .controller('CCAMController', ['ccam',
+            function (CCAMs) {
+                this.c = CCAMs.query();
+                this.delete = function (b) {
+                    // appel DELETE asynchrone au service web sur /boites/{id}
+                    CCAMs.delete(b);
+                    // remet à jour le tableau local des boites en suprimant l'élément effacé
+                    this.c.splice(this.c.indexOf(b), 1);
                 };
             }
         ])

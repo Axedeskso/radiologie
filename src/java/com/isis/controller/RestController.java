@@ -56,8 +56,17 @@ public class RestController {
     @Path("patients")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces("application/json")
-    public void newPatient(Patient p) {
+    public Patient newPatient(Patient p) {
         patientService.newPatient(p);
+        return p;
+    }
+    
+    @POST
+    @Path("patients/{id}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response editCrayon(Patient p) {
+        patientService.updatePatient(p);
+        return Response.status(200).entity(p).build();
     }
 
     //PATIENT
@@ -69,9 +78,9 @@ public class RestController {
     }
     
     @DELETE
-    @Path("patients/{iep}")
-    public Response removePatient(@PathParam("iep") int iep){
-//        patientService.
+    @Path("patients/{id}")
+    public Response removePatient(@PathParam("id") int id){
+        patientService.removePatient(id);
         return Response.status(200).build();
     }
     
@@ -137,8 +146,8 @@ public class RestController {
     @Path("modalites")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces("application/json")
-    public void newModalite(Modalite a) {
-        modaliteService.newModalite(a);
+    public void newModalite(Modalite m) {
+        modaliteService.newModalite(m);
     }
     
     @DELETE

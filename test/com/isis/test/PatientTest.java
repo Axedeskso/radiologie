@@ -56,11 +56,15 @@ public class PatientTest {
     public void patient() {
         clean();
         PatientService serv = new PatientService(DatabaseUtils.fact());
-        Patient cr = serv.newPatient("Axel", "A", 123456, 987654);
-        assertNotNull(cr); 
+        Patient cr = serv.newPatient("FROMENTIN", "Axel", 123456, 987654);
+        assertNotNull(cr);
+        cr = serv.newPatient("GUILLEMANT", "Chloe", 456789, 645789);
+        assertNotNull(cr);
+        cr = serv.newPatient("GARCIA GOZALVEZ", "Pau", 1, 1);
+        assertNotNull(cr);
         List<Patient> res = serv.getAll();
         assert(!res.isEmpty());
-        assert(res.size() == 1);
+        assert(res.size() == 3);
         
         Patient r = serv.getByIEP(987654);
         assert(r!= null && r.getIep() == 987654);

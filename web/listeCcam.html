@@ -1,24 +1,57 @@
 <!DOCTYPE html>
+<div class="row">
+    <div class="col-xs-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-8"><h4>Liste des codifications</h4></div>
+                    <div class="col-xs-4"><a class="btn btn-primary btn-block" ng-href="#/ccam/new" role="button"> Nouvelle codification </a></div>
+                </div>
+            </div>
+            <div class="panel-body">
+                <table class="table table-striped">
+                    <thead >
+                        <tr>
+                            <th>Code</th>
+                            <th>Libellé</th>
+                            <th>Cout</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="c in ctrl.c">
+                            <td> {{ c.code}} </td>
+                            <td> {{ c.libelle}} </td>
+                            <td> {{ c.cout}} </td>
+                            <td> <a class="btn btn-warning" ng-href="ccam/edit/{{c.iep}}"><span  class="glyphicon glyphicon-pencil"></span></a>
+                            <td> <a class="btn btn-danger" ng-click="ctrl.delete(c)"><span  class="glyphicon glyphicon-remove"></span></a></td> 
+                        </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
 
-<h3>Liste des CCAM :</h3> 
+<!--<h3>Liste des CCAM :</h3> 
 
 <table>
     <thead>
-        <th> Code </th>
-        <th> Libelle </th>
-        <th> Cout </th>
-    </thead>
-    <tr ng-repeat='p in ctrl.ccam'>
-        <td> {{ p.code }} </td>
-        <td> {{ p.libelle }} </td>
-        <td> {{ p.cout }} </td>
-        <td> <a ng-href="patients/edit/{{p.id}}"/> Edit </a>
-        <td> <input type="button" value="delete" ng-click="ctrl.delete(p)"/> 
-    </tr>
- 
-    
+    <th> Code </th>
+    <th> Libelle </th>
+    <th> Cout </th>
+</thead>
+<tr ng-repeat='p in ctrl.ccam'>
+    <td> {{ p.code}} </td>
+    <td> {{ p.libelle}} </td>
+    <td> {{ p.cout}} </td>
+    <td> <a ng-href="patients/edit/{{p.id}}"/> Edit </a>
+    <td> <input type="button" value="delete" ng-click="ctrl.delete(p)"/> 
+</tr>
+
+
 </table>
-   
+
 
 <br/>
-
+-->

@@ -42,4 +42,17 @@ public class PatientService {
         List<Patient> res = query.getResultList();
         return res;
     }
+    
+    public void updatePatient(Patient p) {
+        em.getTransaction().begin();
+        em.merge(p);
+        em.getTransaction().commit();
+    }
+    
+    public void removePatient(int id){
+        Patient p = em.find(Patient.class, id);
+        em.getTransaction().begin();
+        em.remove(p);
+        em.getTransaction().commit();
+    }
 }
