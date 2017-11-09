@@ -3,18 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Axel/workspace/radiologie/test/com/isis/test/PatientTest.java</file>
-            <file>file:/C:/Users/Axel/workspace/radiologie/src/java/com/isis/configuration/DatabaseUtils.java</file>
-            <file>file:/C:/Users/Axel/workspace/radiologie/src/java/com/isis/model/Modalite.java</file>
-            <file>file:/C:/Users/Axel/workspace/radiologie/src/java/com/isis/model/Acte.java</file>
-            <file>file:/C:/Users/Axel/workspace/radiologie/src/java/com/isis/configuration/MyAppServletContextListener.java</file>
-            <file>file:/C:/Users/Axel/workspace/radiologie/src/java/com/isis/configuration/ApplicationConfig.java</file>
-            <file>file:/C:/Users/Axel/workspace/radiologie/src/java/com/isis/service/PatientService.java</file>
-            <file>file:/C:/Users/Axel/workspace/radiologie/src/java/com/isis/service/ModaliteService.java</file>
-            <file>file:/C:/Users/Axel/workspace/radiologie/src/java/com/isis/controller/RestController.java</file>
-            <file>file:/C:/Users/Axel/workspace/radiologie/test/com/isis/test/ActeTest.java</file>
-            <file>file:/C:/Users/Axel/workspace/radiologie/test/com/isis/test/ModaliteTest.java</file>
-            <file>file:/C:/Users/Axel/workspace/radiologie/src/java/com/isis/model/CCAM.java</file>
+            <file>file:/C:/Users/ppaugarc/Desktop/ProjectesNetbeans/Urbanisation/radiologie/web/listePatients.html</file>
         </group>
     </open-files>
 </project-private>

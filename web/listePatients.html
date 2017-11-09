@@ -4,8 +4,7 @@
         <div class="panel panel-default">
             <div class="panel-heading">
                 <div class="row">
-                    <div class="col-xs-8"><h4>Liste des admissions</h4></div>
-                    <div class="col-xs-4"><a class="btn btn-primary btn-block" ng-href="/radiologie/#/patients/new"> Nouveau patient </a></div>
+                    <div class="col-xs-12"><h4>Liste des admissions</h4></div>
                 </div>
             </div>
             <div class="panel-body">
@@ -27,8 +26,6 @@
                             <div class="col-xs-3">{{ p.nom}}</div>
                             <div class="col-xs-3">{{ p.prenom}}</div>
                             <div class="col-xs-1"><a class="btn btn-success" ng-href="#/patients/{{p.iep}}" ><span  class="glyphicon glyphicon-download"></span> </a></div>
-                            <div class="col-xs-1"><a class="btn btn-warning" ng-href="#/patients/edit/{{p.id}}"><span  class="glyphicon glyphicon-pencil"></span></a></div>
-                            <div class="col-xs-1"><a class="btn btn-danger" ng-click="ctrl.delete(p)"><span  class="glyphicon glyphicon-remove"></span></a></div>
                         </div>
                     </li>
                 </ul>
