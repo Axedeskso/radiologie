@@ -6,10 +6,10 @@ angular.module('monApp').config(['$routeProvider', function routeConfig($routePr
                     controller: "PatientController as ctrl",
                     templateUrl: 'listePatients.html'
                 })
-//                .when('/patients/:ipp', {
-//                    controller: "PatientVenuesController as ctrl",
-//                    templateUrl: 'listeVenues.html'
-//                })
+                .when('/patients/:ipp/', {
+                    controller: "VenuesController as ctrl",
+                    templateUrl: 'listeVenues.html'
+                })
 //                .when('/patients/:ipp/:iep/actes', {
 //                    controller: "ActesController as ctrl",
 //                    templateUrl: 'listeActes.html'

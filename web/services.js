@@ -4,6 +4,10 @@ angular.module('monApp').factory('Patients', ['$resource', function($resource) {
             return $resource('/radiologie/webresources/patients/:ipp?', { ipp : '@ipp'} );
 }]);
 
+angular.module('monApp').factory('Venues', ['$resource', function($resource) {
+            return $resource('/radiologie/webresources/patients/:ipp?/:iep?', { ipp : '@ipp', iep : '@iep'} );
+}]);
+
 angular.module('monApp').factory('Modalites', ['$resource', function($resource) {
             return $resource('/radiologie/webresources/modalites/:id?', { id : '@id'} );
 }]);

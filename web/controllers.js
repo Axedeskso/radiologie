@@ -11,12 +11,14 @@ angular.module('monApp')
             }
         ])
 
-        .controller('PatientVenueController', ['Patients',
-            function (Patients) {
-                this.pv = Patients.query();
+        .controller('VenuesController', ['Venues','$scope','$routeParams',
+            function(Venues, $scope, $routeParams) {
+                $scope.ipp = $routeParams.ipp;
+                
+                this.v = Venues.query();
                 this.delete = function (b) {
-                    Patients.delete(b);
-                    this.pv.splice(this.pv.indexOf(b), 1);
+                    Venues.delete(b);
+                    this.v.splice(this.v.indexOf(b), 1);
                 };
             }
         ])
