@@ -95,8 +95,8 @@ public class RestController {
     @GET
     @Path("patients/{iep}/actes/{id}")
     @Produces("application/json")
-    public List<Acte> getActeByIep(@PathParam("iep") int iep, @PathParam("id") int id) {
-        return acteService.getByIEP(iep);
+    public Acte getActeById(@PathParam("iep") int iep, @PathParam("id") int id) {
+        return acteService.getById(id);
     }
 
     @DELETE

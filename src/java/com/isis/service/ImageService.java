@@ -2,7 +2,9 @@ package com.isis.service;
 
 import com.isis.model.Image;
 import java.sql.Timestamp;
+import java.util.List;
 import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
 
 public class ImageService {
     EntityManager em;
@@ -27,4 +29,26 @@ public class ImageService {
         em.getTransaction().commit();
         return i;
     }
+    
+    //GET        
+    public List<Image> getAll() {
+        TypedQuery<Image> query = em.createQuery("SELECT i FROM IMAGE i", Image.class);
+        List<Image> res = query.getResultList();
+        return res;
+    }
+    
+    //DELETE
+    public void removeImage(int id) {
+        Image i = em.find(Image.class, id);
+        em.getTransaction().begin();
+        em.remove(i);
+        em.getTransaction().commit();
+    }
+    
+    public void removeAll(){
+        em.getTransaction().begin();
+        em.createQuery("DELETE FROM Image").executeUpdate();
+        em.getTransaction().commit();
+    }
+    
 }

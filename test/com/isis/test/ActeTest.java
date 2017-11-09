@@ -59,9 +59,11 @@ public class ActeTest {
         CCAM c1 = new CCAM("ccamCode", "NomCCAM", (float) 15.50);
         Acte a = serv.newActe(a1, null, null, c1);
         assertNotNull(a); 
+        CCAM c2 = new CCAM("ccamCode2", "NomCCAM2", (float) 1.2);
+        Acte a2 = serv.newActe(a1, null, null, c2);
         List<Acte> res = serv.getAll();
         assert(!res.isEmpty());
-        assert(res.size() == 1);  
+        assert(res.size() == 2);  
         
 //        Modalite r = serv.getByPacs("testpacs");
 //        assert(r!= null && r.getPacs().equals("testpacs"));
