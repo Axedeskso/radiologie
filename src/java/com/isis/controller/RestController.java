@@ -52,6 +52,7 @@ public class RestController {
     public List<Patient> getAllPatient() {
         return patientService.getAll();
     }
+
     @POST
     @Path("patients")
     @Consumes(MediaType.APPLICATION_JSON)
@@ -71,10 +72,17 @@ public class RestController {
 
     //PATIENT
     @GET
-    @Path("patients/{iep}")
+    @Path("patients/{ipp}")
     @Produces("application/json")
-    public Patient getPatient(@PathParam("iep") int iep) {
-        return patientService.getByIEP(iep);
+    public Patient getPatient(@PathParam("ipp") int ipp) {
+        return patientService.getByIPP(ipp);
+    }
+    
+    @GET
+    @Path("patients/{ipp}/{iep}")
+    @Produces("application/json")
+    public Patient getPatient(@PathParam("ipp") int ipp, @PathParam("iep") int iep) {
+        return patientService.getByIEP(ipp);
     }
     
     @DELETE

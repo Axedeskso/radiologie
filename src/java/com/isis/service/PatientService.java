@@ -11,7 +11,6 @@ public class PatientService {
     EntityManager em;
 
     public PatientService(EntityManager em) {
-        System.out.println("EM : " + em == null);
         this.em = em;
     }
     
@@ -24,14 +23,19 @@ public class PatientService {
         em.getTransaction().commit();
     }
     
-    public Patient newPatient(String nom, String prenom, int ipp, int iep){
-        Patient p = new Patient(nom, prenom, ipp, iep);
+    public Patient newPatient(String nom, String prenom, int iep){
+        Patient p = new Patient(nom, prenom, iep);
         em.getTransaction().begin();
         em.persist(p);
         em.getTransaction().commit();
         return p;
     }
 
+    public Patient getByIPP(int ipp) {
+        TypedQuery<Patient> res = em.createQuery("SELECT p FROM Patient p WHERE p.ipp = :ipp",Patient.class).setParameter("ipp", ipp);
+        return res.getSingleResult();
+    }
+    
     public Patient getByIEP(int iep) {
         TypedQuery<Patient> res = em.createQuery("SELECT p FROM Patient p WHERE p.iep = :iep",Patient.class).setParameter("iep", iep);
         return res.getSingleResult();
@@ -53,6 +57,12 @@ public class PatientService {
         Patient p = em.find(Patient.class, id);
         em.getTransaction().begin();
         em.remove(p);
+        em.getTransaction().commit();
+    }
+    
+    public void removeAll(){
+        em.getTransaction().begin();
+        em.createQuery("DELETE FROM Patient").executeUpdate();
         em.getTransaction().commit();
     }
 }

@@ -45,9 +45,9 @@ public class PatientTest {
     
     
     public void clean() {
-        ActeService serv = new ActeService(DatabaseUtils.fact());
+        PatientService serv = new PatientService(DatabaseUtils.fact());
         serv.removeAll();
-        List<Acte> res = serv.getAll();
+        List<Patient> res = serv.getAll();
         assert(res.isEmpty());
     }
     
@@ -56,11 +56,11 @@ public class PatientTest {
     public void patient() {
         clean();
         PatientService serv = new PatientService(DatabaseUtils.fact());
-        Patient cr = serv.newPatient("FROMENTIN", "Axel", 123456, 987654);
+        Patient cr = serv.newPatient("FROMENTIN", "Axel", 987654);
         assertNotNull(cr);
-        cr = serv.newPatient("GUILLEMANT", "Chloe", 456789, 645789);
+        cr = serv.newPatient("GUILLEMANT", "Chloe", 645789);
         assertNotNull(cr);
-        cr = serv.newPatient("GARCIA GOZALVEZ", "Pau", 1, 1);
+        cr = serv.newPatient("GARCIA GOZALVEZ", "Pau", 1);
         assertNotNull(cr);
         List<Patient> res = serv.getAll();
         assert(!res.isEmpty());

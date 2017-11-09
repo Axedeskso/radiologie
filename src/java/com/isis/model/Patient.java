@@ -9,39 +9,29 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "PATIENT")
-public class Patient {
+public class Patient{
 
     @Id
     @Column
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
-
+    private int ipp;
     @Column
     private String nom;
     @Column
     private String prenom;
-    @Column
-    private int ipp;
     @Column
     private int iep;
 
     public Patient(){
     }
     
-    public Patient(String nom, String prenom, int IPP, int IEP) {
+    public Patient(String nom, String prenom, int iep) {
         this.nom = nom;
         this.prenom = prenom;
-        this.ipp = IPP;
-        this.iep = IEP;
+        
+        this.iep = iep;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getNom() {
         return nom;
