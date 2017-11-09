@@ -53,14 +53,26 @@ public class ModaliteTest {
     public void modalite() {
         clean();
         ModaliteService serv = new ModaliteService(DatabaseUtils.fact());
-        Modalite m = serv.newModalite("testmod", "testpacs", "/resources/testpacs");
+        Modalite m = serv.newModalite("CR", "ISIS", "/resources/isis");
+        assertNotNull(m);
+        m = serv.newModalite("RF", "ISIS", "/resources/isis");
+        assertNotNull(m); 
+        m = serv.newModalite("PX", "ISIS", "/resources/isis");
+        assertNotNull(m); 
+        m = serv.newModalite("IO", "ISIS", "/resources/isis");
+        assertNotNull(m); 
+        m = serv.newModalite("CT", "ISIS", "/resources/isis");
         assertNotNull(m); 
         List<Modalite> res = serv.getAll();
         assert(!res.isEmpty());
-        assert(res.size() == 1);  
+        assert(res.size() == 5);  
         
-        Modalite r = serv.getByPacs("testpacs");
-        assert(r!= null && r.getPacs().equals("testpacs"));
+        List<Modalite> p = serv.getByPacs("ISIS");
+        assert(p.size() == 5);
+        
+        Modalite q = serv.getByName("CT");
+        assert(!res.isEmpty());
+        assert(res.size() == 5);
     }
 }
     

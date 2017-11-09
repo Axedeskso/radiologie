@@ -34,14 +34,14 @@ public class Acte {
     @Column(name = "heure")
     private Timestamp heure;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    private CCAM ccam;
+    @Column
+    private Ccam ccam;
 
     public Acte() {
         super();
     }
 
-    public Acte(Patient p, Timestamp date, Timestamp heure, CCAM codeCCAM) {
+    public Acte(Patient p, Timestamp date, Timestamp heure, Ccam codeCCAM) {
         patient = p;
         this.date = date;
         this.heure = heure;
@@ -88,11 +88,11 @@ public class Acte {
         this.heure = heure;
     }
 
-    public CCAM getCcam() {
+    public Ccam getCcam() {
         return ccam;
     }
 
-    public void setCcam(CCAM ccam) {
+    public void setCcam(Ccam ccam) {
         this.ccam = ccam;
     }
 

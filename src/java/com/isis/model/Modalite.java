@@ -12,65 +12,61 @@ import javax.persistence.Table;
 @Table(name = "MODALITE")
 public class Modalite implements Serializable {
 
-	@Id
-        @Column
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
-        
+    @Id
+    @Column
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
+
 //        @Column 
 //        private String code;
-        
-	@Column
-	private String nom;
-	@Column
-	private String pacs;
-	@Column
-	private String link;
-	
+    @Column
+    private String nom;
+    @Column
+    private String pacs;
+    @Column
+    private String link;
 
 // CONSTRUCTOR
-	public Modalite() {
-		super();
-	}
+    public Modalite() {
+        super();
+    }
 
-	public Modalite(String nom, String pacs, String link) {
-		this.nom = nom;
-		this.pacs = pacs;
-		this.link = link;
-	}
+    public Modalite(String nom, String pacs, String link) {
+        this.nom = nom;
+        this.pacs = pacs;
+        this.link = link;
+    }
 
-// GETTER SETTER
+    public int getId() {
+        return id;
+    }
 
-//	public String getCode() {
-//		return code;
-//	}
-//
-//	public void setCode(String code) {
-//		this.code = code;
-//	}
+    public void setId(int id) {
+        this.id = id;
+    }
 
-	public String getNom() {
-		return nom;
-	}
+    public String getNom() {
+        return nom;
+    }
 
-	public void setNom(String nom) {
-		this.nom = nom;
-	}
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
 
-	public String getPacs() {
-		return pacs;
-	}
+    public String getPacs() {
+        return pacs;
+    }
 
-	public void setPacs(String pacs) {
-		this.pacs = pacs;
-	}
+    public void setPacs(String pacs) {
+        this.pacs = pacs;
+    }
 
-	public String getLink() {
-		return link;
-	}
+    public String getLink() {
+        return link;
+    }
 
-	public void setLink(String link) {
-		this.link = link;
-	}
+    public void setLink(String link) {
+        this.link = link;
+    }
 
 }

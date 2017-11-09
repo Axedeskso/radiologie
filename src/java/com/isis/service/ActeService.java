@@ -1,7 +1,7 @@
 package com.isis.service;
 
 import com.isis.model.Acte;
-import com.isis.model.CCAM;
+import com.isis.model.Ccam;
 import com.isis.model.Patient;
 import java.sql.Timestamp;
 import java.util.List;
@@ -26,7 +26,7 @@ public class ActeService {
         em.getTransaction().commit();
     }
 
-    public Acte newActe(Patient p, Timestamp date, Timestamp heure, CCAM ccam) {
+    public Acte newActe(Patient p, Timestamp date, Timestamp heure, Ccam ccam) {
         Acte a = new Acte(p, date, heure, ccam);
         em.getTransaction().begin();
         em.persist(a);

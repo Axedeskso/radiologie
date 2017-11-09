@@ -2,7 +2,7 @@ package com.isis.test;
 
 import com.isis.configuration.DatabaseUtils;
 import com.isis.model.Acte;
-import com.isis.model.CCAM;
+import com.isis.model.Ccam;
 import com.isis.model.Patient;
 import com.isis.service.ActeService;
 import java.util.List;
@@ -56,10 +56,10 @@ public class ActeTest {
         clean();
         ActeService serv = new ActeService(DatabaseUtils.fact());
         Patient a1 = new Patient("McLANE", "John", 218);
-        CCAM c1 = new CCAM("ccamCode", "NomCCAM", (float) 15.50);
+        Ccam c1 = new Ccam("ccamCode", "NomCCAM", (float) 15.50);
         Acte a = serv.newActe(a1, null, null, c1);
         assertNotNull(a); 
-        CCAM c2 = new CCAM("ccamCode2", "NomCCAM2", (float) 1.2);
+        Ccam c2 = new Ccam("ccamCode2", "NomCCAM2", (float) 1.2);
         Acte a2 = serv.newActe(a1, null, null, c2);
         List<Acte> res = serv.getAll();
         assert(!res.isEmpty());

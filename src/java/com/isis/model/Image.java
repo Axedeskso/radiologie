@@ -21,10 +21,12 @@ public class Image {
 
     @Column
     private Timestamp heure;
-
+    
     @Column
     private byte[] image;
-
+    
+    @Column
+    private Modalite modalite;
 // CONSTRUCTOR
     public Image() {
         super();

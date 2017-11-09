@@ -35,9 +35,20 @@ public class ModaliteService {
         return res;
     }
     
-     public Modalite getByPacs(String pacs) {
-        TypedQuery<Modalite> res = em.createQuery("SELECT m FROM Modalite m WHERE m.pacs = :pacs",Modalite.class).setParameter("pacs", pacs);
+    public Modalite getById(int id){
+        Modalite res = em.find(Modalite.class, id);
+        return res;
+    }
+    
+    public Modalite getByName(String name) {
+        TypedQuery<Modalite> res = em.createQuery("SELECT  m FROM Modalite m WHERE m.nom = :nom",Modalite.class).setParameter("nom", name);
         return res.getSingleResult();
+    }
+    
+    public List<Modalite> getByPacs(String pacs) {
+        TypedQuery<Modalite> query = em.createQuery("SELECT m FROM Modalite m WHERE m.pacs = :pacs",Modalite.class).setParameter("pacs", pacs);
+        List<Modalite> res = query.getResultList();
+        return res;
     }
      
      //UPDATE

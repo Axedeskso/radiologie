@@ -8,7 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class CCAM implements Serializable {
+public class Ccam implements Serializable {
 
     private static final long serialVersionUID = 422380150067765159L;
 
@@ -26,11 +26,11 @@ public class CCAM implements Serializable {
     private float cout;
 
 //	CONSTRUCTOR
-    public CCAM() {
+    public Ccam() {
 
     }
 
-    public CCAM(String code, String libelle, float cout) {
+    public Ccam(String code, String libelle, float cout) {
         this.code = code;
         this.libelle = libelle;
         this.cout = cout;

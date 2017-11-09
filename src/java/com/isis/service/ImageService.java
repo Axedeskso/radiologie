@@ -31,8 +31,13 @@ public class ImageService {
     }
     
     //GET        
+    public Image getById(int id) {
+        Image res = em.find(Image.class, id);
+        return res;
+    }
+
     public List<Image> getAll() {
-        TypedQuery<Image> query = em.createQuery("SELECT i FROM IMAGE i", Image.class);
+        TypedQuery<Image> query = em.createQuery("SELECT i FROM Image i", Image.class);
         List<Image> res = query.getResultList();
         return res;
     }

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<div class="row" ng-controller="PatientController">
+    <div class="col-xs-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-12"><h4>Liste des venues de {{p.nom}}</h4></div>
+                </div>
+            </div>
+            <div class="panel-body">
+                <ul class="list-group">
+                    <li class="list-group-item" >
+                        <div class="row">
+                            <div class="col-xs-3">IEP</div>
+                            <div class="col-xs-1">Date d'entrée</div>
+                            <div class="col-xs-1">Date de sortie</div>
+                            <div class="col-xs-1"></div>
+                        </div>
+                    </li>
+                    <!--<tbody>-->
+                    <li class="list-group-item" ng-repeat="p in ctrl.p.iep">
+                        <div class="row">
+                            <div class="col-xs-3">{{ p.iep}}</div>
+                            <div class="col-xs-3">vide</div>
+                            <div class="col-xs-3">vide</div>
+                            <div class="col-xs-1"><a class="btn btn-success" ng-href="#/patients/{{p.ipp}}/{{p.iep}}" ><span  class="glyphicon glyphicon-download"></span> </a></div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
