@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<div class="row">
+    <div class="col-xs-12">
+        <form novalidate class="simple-form">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-xs-12"><h4>Nouveau modalité</h4></div>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-xs-6"><label>Nom</label></div>
+                            <div class="col-xs-6"><input type="text" class="form-control" ng-model="ctrl.m.nom" /></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-6"><label>Pacs</label></div>
+                            <div class="col-xs-6"><input type="text" class="form-control" ng-model="ctrl.m.pacs" /></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-6"><label>Link</label></div>
+                            <div class="col-xs-6"><input type="text" class="form-control" ng-model="ctrl.m.link" /></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    <div class="row">
+                        <div class="col-xs-2"><a class="btn btn-danger" href="#/modalites">Retour</a></div>
+                        <div class="col-xs-8"><div ng-show="ctrl.m.id">Création de la modalité d'identifiant {{ ctrl.m.id}} effectuée.</div></div>
+                        <div class="col-xs-2"><input type="submit" class="btn btn-success pull-right" ng-click="ctrl.update()" value="Enregistrer" /></div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

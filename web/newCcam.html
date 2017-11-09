@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<div class="row">
+    <div class="col-xs-12">
+        <form novalidate class="simple-form">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-xs-12"><h4>Nouveau patient</h4></div>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-xs-6"><label>Code</label></div>
+                            <div class="col-xs-6"><input type="text" class="form-control" ng-model="ctrl.c.code" /></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-6"><label>Libellé</label></div>
+                            <div class="col-xs-6"><input type="text" class="form-control" ng-model="ctrl.c.libelle" /></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-6"><label>Cout</label></div>
+                            <div class="col-xs-6"><input type="text" class="form-control" ng-model="ctrl.c.cout" /></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    <div class="row">
+                        <div class="col-xs-2"><a class="btn btn-danger" href="#/ccam">Retour</a></div>
+                        <div class="col-xs-8"><div ng-show="ctrl.c.id">Création du CCAM d'identifiant {{ ctrl.c.id}} et code {{ ctrl.c.code }} effectuée.</div></div>
+                        <div class="col-xs-2"><input type="submit" class="btn btn-success pull-right" ng-click="ctrl.update()" value="Enregistrer" /></div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

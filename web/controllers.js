@@ -10,7 +10,7 @@ angular.module('monApp')
                 };
             }
         ])
-        
+
         .controller('PatientNewController', ['Patients',
             function (Patients) {
                 this.p = new Patients();
@@ -18,8 +18,19 @@ angular.module('monApp')
                     this.p.$save();
                 };
             }])
-        
-        
+
+        .controller('PatientEditController', ['$routeParams', 'Patients', '$location',
+            function ($routeParams, Patients, $location) {
+                this.p = Patients.get({id: $routeParams.id});
+                this.update = function () {
+                    // appel POST asynchrone au service web sur /crayons/{id} 
+                    this.p.$save();
+                    $location.path("/patients")
+                };
+            }
+        ])
+
+
         .controller('ModaliteController', ['Modalites',
             function (Modalites) {
                 this.m = Modalites.query();
@@ -31,7 +42,7 @@ angular.module('monApp')
                 };
             }
         ])
-        
+
         .controller('ModaliteNewController', ['Modalites',
             function (Modalites) {
                 this.m = new Modalites();
@@ -40,7 +51,16 @@ angular.module('monApp')
                     this.m.$save();
                 };
             }])
-        
+
+        .controller('CCAMNewController', ['ccam',
+            function (CCAM) {
+                this.c = new CCAM();
+                this.update = function () {
+                    // appel POST asynchrone au service web sur /crayons
+                    this.c.$save();
+                };
+            }])
+
         .controller('ModaliteEditController', ['$routeParams', 'Modalites', '$location',
             function ($routeParams, Modalites, $location) {
                 this.m = Modalites.get({id: $routeParams.id});
@@ -51,7 +71,7 @@ angular.module('monApp')
                 };
             }
         ])
-        
+
         .controller('CCAMController', ['ccam',
             function (CCAMs) {
                 this.c = CCAMs.query();

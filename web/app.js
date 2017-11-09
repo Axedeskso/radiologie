@@ -2,7 +2,7 @@ angular.module('monApp', ['ngRoute', 'ngResource']);
 
 angular.module('monApp').config(['$routeProvider', function routeConfig($routeProvider) {
         $routeProvider
-        
+
                 .when('/patients', {
                     controller: "PatientController as ctrl",
                     templateUrl: 'listePatients.html'
@@ -10,6 +10,10 @@ angular.module('monApp').config(['$routeProvider', function routeConfig($routePr
                 .when('/patients/new', {
                     controller: "PatientNewController as ctrl",
                     templateUrl: 'newPatient.html'
+                })
+                .when('/patients/edit/:id', {
+                    controller: "PatientEditController as ctrl",
+                    templateUrl: 'editPatient.html'
                 })
                 .when('/modalites/edit/:id', {
                     controller: "ModaliteEditController as ctrl",
@@ -21,7 +25,7 @@ angular.module('monApp').config(['$routeProvider', function routeConfig($routePr
                 })
                 .when('/modalites/new', {
                     controller: "ModaliteNewController as ctrl",
-//                    templateUrl: 'newModalite.html'
+                    templateUrl: 'newModalite.html'
                 })
                 .when('/modalites/edit/:id', {
                     controller: "ModaliteEditController as ctrl",
@@ -33,15 +37,15 @@ angular.module('monApp').config(['$routeProvider', function routeConfig($routePr
                 })
                 .when('/ccam/new', {
                     controller: "CCAMNewController as ctrl",
-//                    templateUrl: 'newCcam.html'
+                    templateUrl: 'newCcam.html'
                 })
                 .when('/ccam/edit/:id', {
                     controller: "CCAMEditController as ctrl",
 //                    templateUrl: 'editModalite.html'
                 })
-        
+
                 ///OLD
-                
+
                 .when('/crayons', {
                     controller: "CrayonsController as ctrl",
                     templateUrl: 'listeCrayon.html'
@@ -66,10 +70,10 @@ angular.module('monApp').config(['$routeProvider', function routeConfig($routePr
                     controller: "BoiteNewController as ctrl",
                     templateUrl: 'newBoite.html'
                 })
-                
+
                 //
-                
+
                 .otherwise({redirectTo: '/'});
-                
+
     }]);
 
