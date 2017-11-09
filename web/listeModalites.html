@@ -12,22 +12,20 @@
             <table class="table table-striped">
                 <thead >
                     <tr>
-                        <th>ID</th>
                         <th>Nom</th>
                         <th>PACS</th>
                         <th>Lien</th>
-<!--                        <th></th>
-                        <th></th>-->
+                        <th></th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr ng-repeat="m in ctrl.m">
-                        <td> {{ m.id}} </td>
                         <td> {{ m.nom}} </td>
                         <td> {{ m.pacs}} </td>
                         <td> {{ m.link}} </td>
-                        <!--<td> <a class="btn btn-warning" ng-href="/radiologie/#/modalites/edit/{{m.id}}"><span  class="glyphicon glyphicon-pencil"></span></a></td>-->
-                        <!--<td> <a class="btn btn-danger" ng-click="ctrl.delete(m)"><span  class="glyphicon glyphicon-remove"></span></a></td>--> 
+                        <td> <a class="btn btn-warning" ng-href="/radiologie/#/modalites/edit/{{m.id}}"><span  class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td> <a class="btn btn-danger" ng-click="ctrl.delete(m)"><span  class="glyphicon glyphicon-remove"></span></a></td> 
                     </tr>
             </table>
             </div>

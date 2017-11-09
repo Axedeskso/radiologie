@@ -11,19 +11,21 @@
                 <ul class="list-group">
                     <li class="list-group-item" >
                         <div class="row">
-                            <div class="col-xs-3">IPP</div>
+                            <div class="col-xs-2">IPP</div>
+                            <div class="col-xs-2">IEP</div>
                             <div class="col-xs-3">Nom</div>
                             <div class="col-xs-3">Prenom</div>
-                            <div class="col-xs-1">Venues</div>
+                            <div class="col-xs-2">Venues</div>
                         </div>
                     </li>
                     <!--<tbody>-->
                     <li class="list-group-item" ng-repeat="p in ctrl.p">
                         <div class="row">
-                            <div class="col-xs-3">{{ p.ipp}}</div>
+                            <div class="col-xs-2">{{ p.ipp}}</div>
+                            <div class="col-xs-2">{{ p.iep}}</div>
                             <div class="col-xs-3">{{ p.nom}}</div>
                             <div class="col-xs-3">{{ p.prenom}}</div>
-                            <div class="col-xs-3"><a class="btn btn-success btn-bloc" ng-href="#/patients/{{p.ipp}}" ><span  class="glyphicon glyphicon-download"></span> </a></div>
+                            <div class="col-xs-2"><a class="btn btn-success btn-bloc" ng-href="#/patients/{{p.ipp}}/{{p.iep}}" ><span  class="glyphicon glyphicon-download"></span> </a></div>
                         </div>
                     </li>
                 </ul>

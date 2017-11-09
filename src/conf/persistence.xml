@@ -4,14 +4,15 @@
     <provider>org.hibernate.ejb.HibernatePersistence</provider>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
-        <property name="javax.persistence.jdbc.url" value="jdbc:mysql://kim.kurasawa.fr:3306/isis2?zeroDateTimeBehavior=convertToNull"/>
-        <property name="javax.persistence.jdbc.user" value="isis2"/>
-        <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
-        <property name="javax.persistence.jdbc.password" value="isis2"/>
-        <property name="hibernate.cache.provider_class" value="org.hibernate.cache.NoCacheProvider"/>
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://kim.kurasawa.fr:3306/isis2?zeroDateTimeBehavior=convertToNull"/>
+      <property name="javax.persistence.jdbc.user" value="isis2"/>
+      <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+      <property name="javax.persistence.jdbc.password" value="isis2"/>
+      <property name="hibernate.cache.provider_class" value="org.hibernate.cache.NoCacheProvider"/>
+      <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
     </properties>
   </persistence-unit>
-    <persistence-unit name="localPU" transaction-type="RESOURCE_LOCAL">
+  <persistence-unit name="localPU" transaction-type="RESOURCE_LOCAL">
     <provider>org.hibernate.ejb.HibernatePersistence</provider>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
@@ -20,7 +21,6 @@
       <property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.ClientDriver"/>
       <property name="javax.persistence.jdbc.password" value="app"/>
       <property name="hibernate.cache.provider_class" value="org.hibernate.cache.NoCacheProvider"/>
-      <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
     </properties>
   </persistence-unit>
 </persistence>

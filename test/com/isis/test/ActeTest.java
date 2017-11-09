@@ -65,8 +65,6 @@ public class ActeTest {
         assert(!res.isEmpty());
         assert(res.size() == 2);  
         
-//        Modalite r = serv.getByPacs("testpacs");
-//        assert(r!= null && r.getPacs().equals("testpacs"));
     }
 }
     
