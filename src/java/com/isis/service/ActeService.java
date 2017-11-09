@@ -41,7 +41,7 @@ public class ActeService {
     }
 
     public List<Acte> getByIEP(int iep) {
-        TypedQuery<Acte> query = em.createQuery("SELECT c FROM Acte a JOIN a.patient p WHERE p.iep = :iep", Acte.class).setParameter("iep", iep);
+        TypedQuery<Acte> query = em.createQuery("SELECT a FROM Acte a JOIN a.patient p WHERE p.iep = :iep", Acte.class).setParameter("iep", iep);
         List<Acte> res = query.getResultList();
         return res;
     }
@@ -53,14 +53,14 @@ public class ActeService {
     }
     
     //UPDATE
-    public void edit(Acte cr) {
+    public void updateActe(Acte cr) {
         em.getTransaction().begin();
         em.merge(cr);
         em.getTransaction().commit();
     }
     
     //DELETE
-    public void remove(int id) {
+    public void removeActe(int id) {
         Acte cr = em.find(Acte.class, id);
         em.getTransaction().begin();
         em.remove(cr);

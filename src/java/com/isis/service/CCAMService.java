@@ -32,26 +32,26 @@ public class CCAMService {
     }
     
     //GET
+    public CCAM getByCode(String code) {
+        TypedQuery<CCAM> res = em.createQuery("SELECT p FROM CCAM p WHERE p.code = :code",CCAM.class).setParameter("code", code);
+        return res.getSingleResult();
+    }
+    
     public List<CCAM> getAll() {
         TypedQuery<CCAM> query = em.createQuery("SELECT c FROM CCAM c", CCAM.class);
         List<CCAM> res = query.getResultList();
         return res;
     }
     
-     public CCAM getByCode(String code) {
-        TypedQuery<CCAM> res = em.createQuery("SELECT p FROM CCAM p WHERE p.code = :code",CCAM.class).setParameter("code", code);
-        return res.getSingleResult();
-    }
-    
      //UPDATE
-    public void edit(CCAM c) {
+    public void updateCcam(CCAM c) {
         em.getTransaction().begin();
         em.merge(c);
         em.getTransaction().commit();
     }
     
     //DELETE
-    public void remove(int id) {
+    public void removeCcam(int id) {
         CCAM c = em.find(CCAM.class, id);
         em.getTransaction().begin();
         em.remove(c);

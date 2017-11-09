@@ -39,6 +39,13 @@ public class ModaliteService {
         TypedQuery<Modalite> res = em.createQuery("SELECT m FROM Modalite m WHERE m.pacs = :pacs",Modalite.class).setParameter("pacs", pacs);
         return res.getSingleResult();
     }
+     
+     //UPDATE
+    public void updateModalite(Modalite m) {
+        em.getTransaction().begin();
+        em.merge(m);
+        em.getTransaction().commit();
+    }
     
     //DELETE
     public void remove(int id) {

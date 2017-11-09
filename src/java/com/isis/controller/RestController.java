@@ -64,7 +64,7 @@ public class RestController {
     @POST
     @Path("patients/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response editCrayon(Patient p) {
+    public Response editPatient(Patient p) {
         patientService.updatePatient(p);
         return Response.status(200).entity(p).build();
     }
@@ -88,8 +88,8 @@ public class RestController {
     @GET
     @Path("patients/{iep}/actes")
     @Produces("application/json")
-    public String getActesByIep(@PathParam("iep") int iep) {
-        return "patientService.getByIEP(iep)";
+    public List<Acte> getActesByIep(@PathParam("iep") int iep) {
+        return acteService.getByIEP(iep);
     }
     
     @GET
@@ -102,7 +102,7 @@ public class RestController {
     @DELETE
     @Path("patients/{iep}/actes/{id}")
     public Response removeActe(@PathParam("iep") int iep, @PathParam("id") int id){
-        acteService.remove(id);
+        acteService.removeActe(id);
         return Response.status(200).build();
     }
     
@@ -127,10 +127,18 @@ public class RestController {
         ccamService.newCcam(c);
     }
     
+    @POST
+    @Path("ccam/{id}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response editCcam(CCAM c) {
+        ccamService.updateCcam(c);
+        return Response.status(200).entity(c).build();
+    }
+    
     @DELETE
     @Path("ccam/{id}")
     public Response removeCCAM(@PathParam("id") int id){
-        ccamService.remove(id);
+        ccamService.removeCcam(id);
         return Response.status(200).build();
     }
     
@@ -148,6 +156,14 @@ public class RestController {
     @Produces("application/json")
     public void newModalite(Modalite m) {
         modaliteService.newModalite(m);
+    }
+    
+    @POST
+    @Path("modalites/{id}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response editModalite(Modalite m) {
+        modaliteService.updateModalite(m);
+        return Response.status(200).entity(m).build();
     }
     
     @DELETE
