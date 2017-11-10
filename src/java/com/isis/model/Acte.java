@@ -20,11 +20,11 @@ public class Acte {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int iDActe;
+    private int id;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    private Patient patient;
-
+    private Venue venue;
+    
     @OneToMany
     private List<Image> images;
     
@@ -34,34 +34,35 @@ public class Acte {
     @Column(name = "heure")
     private Timestamp heure;
 
-    @Column
-    private Ccam ccam;
+    @OneToMany
+    private List<Ccam> ccam;
 
     public Acte() {
         super();
     }
 
-    public Acte(Patient p, Timestamp date, Timestamp heure, Ccam codeCCAM) {
-        patient = p;
+    public Acte(Venue venue, List<Image> images, Timestamp date, Timestamp heure, List<Ccam> ccam) {
+        this.venue = venue;
+        this.images = images;
         this.date = date;
         this.heure = heure;
-        this.ccam = codeCCAM;
+        this.ccam = ccam;
     }
 
-    public int getiDActe() {
-        return iDActe;
+    public int getId() {
+        return id;
     }
 
-    public void setiDActe(int iDActe) {
-        this.iDActe = iDActe;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public Patient getPatient() {
-        return patient;
+    public Venue getVenue() {
+        return venue;
     }
 
-    public void setPatient(Patient patient) {
-        this.patient = patient;
+    public void setVenue(Venue venue) {
+        this.venue = venue;
     }
 
     public List<Image> getImages() {
@@ -88,11 +89,11 @@ public class Acte {
         this.heure = heure;
     }
 
-    public Ccam getCcam() {
+    public List<Ccam> getCcam() {
         return ccam;
     }
 
-    public void setCcam(Ccam ccam) {
+    public void setCcam(List<Ccam> ccam) {
         this.ccam = ccam;
     }
 

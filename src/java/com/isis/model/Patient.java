@@ -1,15 +1,17 @@
 package com.isis.model;
 
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "PATIENT")
-public class Patient{
+public class Patient {
 
     @Id
     @Column
@@ -19,19 +21,22 @@ public class Patient{
     private String nom;
     @Column
     private String prenom;
-    @Column
-    private int iep;
+    @OneToMany
+    private List<Venue> venues;
 
-    public Patient(){
+    public Patient() {
     }
-    
-    public Patient(String nom, String prenom, int iep) {
+
+    public Patient(String nom, String prenom, List<Venue> venues) {
         this.nom = nom;
         this.prenom = prenom;
-        
-        this.iep = iep;
+        this.venues = venues;
     }
 
+    public Patient(String nom, String prenom) {
+        this.nom = nom;
+        this.prenom = prenom;
+    }
 
     public String getNom() {
         return nom;
@@ -57,11 +62,11 @@ public class Patient{
         this.ipp = ipp;
     }
 
-    public int getIep() {
-        return iep;
+    public List<Venue> getVenues() {
+        return venues;
     }
 
-    public void setIep(int iep) {
-        this.iep = iep;
+    public void setVenues(List<Venue> venues) {
+        this.venues = venues;
     }
 }

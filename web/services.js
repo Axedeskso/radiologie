@@ -5,7 +5,11 @@ angular.module('monApp').factory('Patients', ['$resource', function($resource) {
 }]);
 
 angular.module('monApp').factory('Venues', ['$resource', function($resource) {
-            return $resource('/radiologie/webresources/patients/:ipp?/:iep?', { ipp : '@ipp', iep : '@iep'} );
+            return $resource('/radiologie/webresources/patients/:ipp?/:iep?/', { iep : '@iep'} );
+}]);
+
+angular.module('monApp').factory('Actes', ['$resource', function($resource) {
+            return $resource('/radiologie/webresources/patients/:ipp?/:iep?/actes/:idActe', { idActe : '@idActe'} );
 }]);
 
 angular.module('monApp').factory('Modalites', ['$resource', function($resource) {

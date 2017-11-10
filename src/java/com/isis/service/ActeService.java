@@ -3,6 +3,7 @@ package com.isis.service;
 import com.isis.model.Acte;
 import com.isis.model.Ccam;
 import com.isis.model.Patient;
+import com.isis.model.Venue;
 import java.sql.Timestamp;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -26,13 +27,13 @@ public class ActeService {
         em.getTransaction().commit();
     }
 
-    public Acte newActe(Patient p, Timestamp date, Timestamp heure, Ccam ccam) {
-        Acte a = new Acte(p, date, heure, ccam);
-        em.getTransaction().begin();
-        em.persist(a);
-        em.getTransaction().commit();
-        return a;
-    }
+//    public Acte newActe(Venue p, Timestamp date, Timestamp heure, Ccam ccam) {
+//        Acte a = new Acte(p, date, heure, ccam);
+//        em.getTransaction().begin();
+//        em.persist(a);
+//        em.getTransaction().commit();
+//        return a;
+//    }
 
     //GET
     public Acte getById(int id) {

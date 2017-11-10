@@ -22,6 +22,16 @@ angular.module('monApp')
                 };
             }
         ])
+        
+        .controller('ActesController', ['Actes',
+            function(Actes) {                
+                this.a = Actes.query();
+                this.delete = function (b) {
+                    Actes.delete(b);
+                    this.a.splice(this.a.indexOf(b), 1);
+                };
+            }
+        ])
 
         .controller('ModaliteController', ['Modalites',
             function (Modalites) {
