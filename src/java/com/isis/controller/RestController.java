@@ -61,12 +61,19 @@ public class RestController {
         return patientService.getByIPP(ipp);
     }
     
-//    @GET
-//    @Path("patients/{ipp}/{iep}")
-//    @Produces("application/json")
-//    public Patient getVenue(@PathParam("ipp") int ipp, @PathParam("iep") int iep) {
-//        return patientService.getByIEP(iep);
-//    }
+    @GET
+    @Path("patients/{ipp}/venues/")
+    @Produces("application/json")
+    public Patient getAllVenues(@PathParam("ipp") int ipp) {
+        return null;
+    }
+    
+    @GET
+    @Path("patients/{ipp}/venues/{iep}")
+    @Produces("application/json")
+    public Patient getVenue(@PathParam("ipp") int ipp, @PathParam("iep") int iep) {
+        return null;
+    }
     
     @GET
     @Path("patients/{ipp}/{iep}/actes")

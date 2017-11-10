@@ -23,13 +23,19 @@ public class Venue {
     @Id
     @Column(name = "iep")
     private int iep;
-
+    @Column
     @ManyToOne(cascade = CascadeType.ALL)
     private Patient patient;
-    
-    @OneToMany
+    @Column
+    @OneToMany(cascade = CascadeType.ALL)
     private List<Acte> actes;
 
+    public Venue(){}
+    
+    public Venue(Patient patient){
+        this.patient = patient;
+    }
+    
     public Venue(Patient patient, List<Acte> actes) {
         this.patient = patient;
         this.actes = actes;
@@ -57,8 +63,5 @@ public class Venue {
 
     public void setActes(List<Acte> actes) {
         this.actes = actes;
-    }
-
-    
-    
+    }   
 }

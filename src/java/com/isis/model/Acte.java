@@ -34,14 +34,14 @@ public class Acte {
     @Column(name = "heure")
     private Timestamp heure;
 
-    @OneToMany
-    private List<Ccam> ccam;
+    @Column
+    private Ccam ccam;
 
     public Acte() {
         super();
     }
 
-    public Acte(Venue venue, List<Image> images, Timestamp date, Timestamp heure, List<Ccam> ccam) {
+    public Acte(Venue venue, List<Image> images, Timestamp date, Timestamp heure, Ccam ccam) {
         this.venue = venue;
         this.images = images;
         this.date = date;
@@ -89,13 +89,13 @@ public class Acte {
         this.heure = heure;
     }
 
-    public List<Ccam> getCcam() {
+    public Ccam getCcam() {
         return ccam;
     }
 
-    public void setCcam(List<Ccam> ccam) {
+    public void setCcam(Ccam ccam) {
         this.ccam = ccam;
     }
 
-    
+
 }

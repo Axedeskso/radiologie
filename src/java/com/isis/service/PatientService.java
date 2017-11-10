@@ -30,7 +30,7 @@ public class PatientService {
         em.getTransaction().commit();
         return p;
     }
-
+ 
     public Patient getByIPP(int ipp) {
         TypedQuery<Patient> res = em.createQuery("SELECT p FROM Patient p WHERE p.ipp = :ipp",Patient.class).setParameter("ipp", ipp);
         return res.getSingleResult();
