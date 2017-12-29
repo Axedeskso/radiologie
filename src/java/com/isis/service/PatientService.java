@@ -1,9 +1,9 @@
 package com.isis.service;
 
 import com.isis.model.Patient;
-import com.isis.model.Venue;
 import java.util.List;
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import javax.persistence.TypedQuery;
 
 public class PatientService {
@@ -30,7 +30,7 @@ public class PatientService {
         em.getTransaction().commit();
         return p;
     }
- 
+
     public Patient getByIPP(int ipp) {
         TypedQuery<Patient> res = em.createQuery("SELECT p FROM Patient p WHERE p.ipp = :ipp",Patient.class).setParameter("ipp", ipp);
         return res.getSingleResult();

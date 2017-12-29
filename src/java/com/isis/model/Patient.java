@@ -1,7 +1,6 @@
 package com.isis.model;
 
 import java.util.List;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,7 +11,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "PATIENT")
-public class Patient {
+public class Patient{
 
     @Id
     @Column
@@ -22,23 +21,17 @@ public class Patient {
     private String nom;
     @Column
     private String prenom;
-    @Column
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany
     private List<Venue> venues;
 
-    public Patient() {
+    public Patient(){
     }
-
-    public Patient(String nom, String prenom, List<Venue> venues) {
-        this.nom = nom;
-        this.prenom = prenom;
-        this.venues = venues;
-    }
-
+    
     public Patient(String nom, String prenom) {
         this.nom = nom;
         this.prenom = prenom;
     }
+
 
     public String getNom() {
         return nom;
@@ -71,4 +64,6 @@ public class Patient {
     public void setVenues(List<Venue> venues) {
         this.venues = venues;
     }
+
+
 }

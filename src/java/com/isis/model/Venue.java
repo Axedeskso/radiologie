@@ -1,12 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.isis.model;
 
+import java.sql.Timestamp;
 import java.util.List;
 import javax.persistence.CascadeType;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -21,24 +18,22 @@ import javax.persistence.Table;
 public class Venue {
 
     @Id
-    @Column(name = "iep")
-    private int iep;
     @Column
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int iep;
+
     @ManyToOne(cascade = CascadeType.ALL)
     private Patient patient;
-    @Column
-    @OneToMany(cascade = CascadeType.ALL)
+
+    @OneToMany
     private List<Acte> actes;
 
-    public Venue(){}
-    
-    public Venue(Patient patient){
-        this.patient = patient;
+    public Venue() {
+        super();
     }
-    
-    public Venue(Patient patient, List<Acte> actes) {
-        this.patient = patient;
-        this.actes = actes;
+
+    public Venue(Patient p) {
+        this.patient = p;
     }
 
     public int getIep() {
@@ -63,5 +58,7 @@ public class Venue {
 
     public void setActes(List<Acte> actes) {
         this.actes = actes;
-    }   
+    }
+
+
 }

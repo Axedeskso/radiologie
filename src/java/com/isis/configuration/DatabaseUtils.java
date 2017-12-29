@@ -25,7 +25,7 @@ public class DatabaseUtils {
    
     static public EntityManager factTest() {
          if (fact == null) {
-             fact = Persistence.createEntityManagerFactory("isis3TestPU");
+             fact = Persistence.createEntityManagerFactory("radioTestPU");
              em = fact.createEntityManager();
          }
          return em; 

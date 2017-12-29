@@ -3,8 +3,8 @@ package com.isis.service;
 import com.isis.model.Patient;
 import com.isis.model.Venue;
 import java.util.List;
-
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import javax.persistence.TypedQuery;
 
 public class VenueService {
@@ -16,59 +16,47 @@ public class VenueService {
     }
     
     public VenueService(){
-        
     }
-
+    
     public void newVenue(Venue v) {
         em.getTransaction().begin();
         em.persist(v);
         em.getTransaction().commit();
     }
 
-    public Venue newVenue(Patient p) {
-        Venue v = new Venue(p);
-        em.getTransaction().begin();
-        em.persist(v);
-        em.getTransaction().commit();
-        return v;
+    public Venue getByIEP(int iep) {
+        TypedQuery<Venue> res = em.createQuery("SELECT v FROM Venue v WHERE v.iep = :iep",Venue.class).setParameter("iep", iep);
+        return res.getSingleResult();
     }
 
-    //GET
-    public Venue getById(int iep) {
-        Venue res = em.find(Venue.class, iep);
-        return res;
-    }
-//
-    public List<Venue> getByIPP(int ipp) {
-        TypedQuery<Venue> query = em.createQuery("SELECT v FROM Venue v JOIN v.patient p WHERE p.ipp = :ipp", Venue.class).setParameter("ipp", ipp);
+    public List<Venue> getByPatient(Patient p) {
+        TypedQuery<Venue> query =  em.createQuery("SELECT v FROM Venue v WHERE v.patient = :patient",Venue.class).setParameter("patient", p);
         List<Venue> res = query.getResultList();
         return res;
     }
-
+    
     public List<Venue> getAll() {
         TypedQuery<Venue> query = em.createQuery("SELECT v FROM Venue v", Venue.class);
         List<Venue> res = query.getResultList();
         return res;
     }
     
-    //UPDATE
-    public void updateActe(Venue cr) {
+    public void updatePatient(Patient p) {
         em.getTransaction().begin();
-        em.merge(cr);
+        em.merge(p);
         em.getTransaction().commit();
     }
     
-    //DELETE
-    public void removeVenue(int iep) {
-        Venue cr = em.find(Venue.class, iep);
+    public void removePatient(int id){
+        Patient p = em.find(Patient.class, id);
         em.getTransaction().begin();
-        em.remove(cr);
+        em.remove(p);
         em.getTransaction().commit();
     }
-//    
+    
     public void removeAll(){
         em.getTransaction().begin();
-        em.createQuery("DELETE FROM Venue").executeUpdate();
+        em.createQuery("DELETE FROM Patient").executeUpdate();
         em.getTransaction().commit();
     }
 }

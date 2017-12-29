@@ -20,11 +20,11 @@ public class Acte {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private int iDActe;
 
     @ManyToOne(cascade = CascadeType.ALL)
     private Venue venue;
-    
+
     @OneToMany
     private List<Image> images;
     
@@ -41,20 +41,19 @@ public class Acte {
         super();
     }
 
-    public Acte(Venue venue, List<Image> images, Timestamp date, Timestamp heure, Ccam ccam) {
-        this.venue = venue;
-        this.images = images;
+    public Acte(Venue v, Timestamp date, Timestamp heure, Ccam codeCCAM) {
+        this.venue = v;
         this.date = date;
         this.heure = heure;
-        this.ccam = ccam;
+        this.ccam = codeCCAM;
     }
 
-    public int getId() {
-        return id;
+    public int getiDActe() {
+        return iDActe;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setiDActe(int iDActe) {
+        this.iDActe = iDActe;
     }
 
     public Venue getVenue() {
@@ -64,6 +63,8 @@ public class Acte {
     public void setVenue(Venue venue) {
         this.venue = venue;
     }
+
+    
 
     public List<Image> getImages() {
         return images;
@@ -97,5 +98,5 @@ public class Acte {
         this.ccam = ccam;
     }
 
-
+    
 }

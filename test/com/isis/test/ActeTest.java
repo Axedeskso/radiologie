@@ -4,6 +4,7 @@ import com.isis.configuration.DatabaseUtils;
 import com.isis.model.Acte;
 import com.isis.model.Ccam;
 import com.isis.model.Patient;
+import com.isis.model.Venue;
 import com.isis.service.ActeService;
 import java.util.List;
 import javax.persistence.EntityManagerFactory;
@@ -39,31 +40,30 @@ public class ActeTest {
     public void tearDown() {
     }
 
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    
-    
     public void clean() {
-        ActeService serv = new ActeService(DatabaseUtils.fact());
+        ActeService serv = new ActeService(DatabaseUtils.factTest());
         serv.removeAll();
         List<Acte> res = serv.getAll();
         assert(res.isEmpty());
     }
     
         
-//    @Test
-//    public void acte() {
+    @Test
+    public void acte() {
 //        clean();
-//        ActeService serv = new ActeService(DatabaseUtils.fact());
-//        Patient a1 = new Patient();
-//        Ccam c1 = new Ccam("ccamCode", "NomCCAM", (float) 15.50);
-//        Acte a = serv.newActe();
-//        assertNotNull(a); 
-//        Ccam c2 = new Ccam("ccamCode2", "NomCCAM2", (float) 1.2);
-//        Acte a2 = serv.newActe();
-//        List<Acte> res = serv.getAll();
-//        assert(!res.isEmpty());
-//        assert(res.size() == 2);  
-//    }
+        ActeService serv = new ActeService(DatabaseUtils.fact());
+        Patient a1 = new Patient("McLANE", "John");
+        Venue v1 = new Venue(a1);
+        Ccam c1 = new Ccam("ccamCode", "NomCCAM", (float) 15.50);
+        Acte a = serv.newActe(v1, null, null, c1);
+        assertNotNull(a);
+        Venue v2 = new Venue(a1);
+        Ccam c2 = new Ccam("ccamCode2", "NomCCAM2", (float) 1.2);
+        Acte a2 = serv.newActe(v2, null, null, c2);
+        List<Acte> res = serv.getAll();
+        assert(!res.isEmpty());
+        assert(res.size() == 2);  
+        
+    }
 }
     

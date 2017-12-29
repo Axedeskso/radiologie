@@ -6,11 +6,13 @@ import com.isis.model.Ccam;
 import com.isis.model.Image;
 import com.isis.model.Modalite;
 import com.isis.model.Patient;
+import com.isis.model.Venue;
 import com.isis.service.ActeService;
 import com.isis.service.CcamService;
 import com.isis.service.ImageService;
 import com.isis.service.ModaliteService;
 import com.isis.service.PatientService;
+import com.isis.service.VenueService;
 import java.util.List;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -32,6 +34,7 @@ public class RestController {
 
     ActeService acteService;
     PatientService patientService;
+    VenueService venueService;
     ModaliteService modaliteService;
     CcamService ccamService;
     ImageService imageService;
@@ -39,6 +42,7 @@ public class RestController {
     public RestController() {
         acteService = new ActeService(DatabaseUtils.fact());
         patientService = new PatientService(DatabaseUtils.fact());
+        venueService = new VenueService(DatabaseUtils.fact());
         modaliteService = new ModaliteService(DatabaseUtils.fact());
         ccamService = new CcamService(DatabaseUtils.fact());
         imageService = new ImageService(DatabaseUtils.fact());
@@ -62,40 +66,50 @@ public class RestController {
     }
     
     @GET
-    @Path("patients/{ipp}/venues/")
+    @Path("patients/{ipp}/venues")
     @Produces("application/json")
-    public Patient getAllVenues(@PathParam("ipp") int ipp) {
-        return null;
+    public List<Venue> getVenues(@PathParam("ipp") int ipp) {
+        Patient p = new Patient();
+        p.setIpp(ipp);
+        return venueService.getByPatient(p);
     }
     
     @GET
     @Path("patients/{ipp}/venues/{iep}")
     @Produces("application/json")
-    public Patient getVenue(@PathParam("ipp") int ipp, @PathParam("iep") int iep) {
-        return null;
+    public Venue getVenuesByIEP(@PathParam("ipp") int ipp, @PathParam("iep") int iep) {
+        return venueService.getByIEP(iep);
+    }
+    
+    
+//    @GET
+//    @Path("patients/{ipp}/{iep}")
+//    @Produces("application/json")
+//    public Patient getVenue(@PathParam("ipp") int ipp, @PathParam("iep") int iep) {
+//        return patientService.getByIEP(iep);
+//    }
+    
+//    @GET
+//    @Path("patients/{ipp}/{iep}/actes")
+//    @Produces("application/json")
+//    public List<Acte> getPatientActes(@PathParam("ipp") int ipp, @PathParam("iep") int iep) {
+//        return acteService.getByIEP(iep);
+//    }
+    
+    @GET
+    @Path("patients/{ipp}/{iep}/actes/{id}")
+    @Produces("application/json")
+    public Acte getActeById(@PathParam("iep") int iep, @PathParam("id") int id) {
+        return acteService.getById(id);
     }
     
     @GET
-    @Path("patients/{ipp}/{iep}/actes")
+    @Path("patients/{ipp}/{iep}/actes/{id}/images")
     @Produces("application/json")
-    public List<Acte> getPatientActes(@PathParam("ipp") int ipp, @PathParam("iep") int iep) {
-        return acteService.getByIEP(iep);
+    public List<Image> getImagesByActe(@PathParam("id") int id) {
+        return imageService.getAll();
     }
     
-//    @GET
-//    @Path("patients/{ipp}/{iep}/actes/{id}")
-//    @Produces("application/json")
-//    public Acte getActeById(@PathParam("iep") int iep, @PathParam("id") int id) {
-//        return acteService.getById(id);
-//    }
-//    
-//    @GET
-//    @Path("patients/{ipp}/{iep}/actes/{id}/images")
-//    @Produces("application/json")
-//    public List<Image> getImagesByActe(@PathParam("id") int id) {
-//        return imageService.getAll();
-//    }
-//    
 //    @GET
 //    @Path("patients/{ipp}/{iep}/actes/{id}/images")
 //    @Produces("application/json")

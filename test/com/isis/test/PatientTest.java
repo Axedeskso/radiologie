@@ -54,7 +54,7 @@ public class PatientTest {
         
     @Test
     public void patient() {
-        clean();
+//        clean();
         PatientService serv = new PatientService(DatabaseUtils.fact());
         Patient cr = serv.newPatient("FROMENTIN", "Axel");
         assertNotNull(cr);
@@ -65,6 +65,8 @@ public class PatientTest {
         List<Patient> res = serv.getAll();
         assert(!res.isEmpty());
         assert(res.size() == 3);
+        
+        
     }
 }
     
