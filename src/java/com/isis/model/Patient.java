@@ -21,8 +21,8 @@ public class Patient{
     private String nom;
     @Column
     private String prenom;
-    @OneToMany
-    private List<Venue> venues;
+//    @OneToMany
+//    private List<Venue> venues;
 
     public Patient(){
     }
@@ -57,13 +57,13 @@ public class Patient{
         this.ipp = ipp;
     }
 
-    public List<Venue> getVenues() {
-        return venues;
-    }
-
-    public void setVenues(List<Venue> venues) {
-        this.venues = venues;
-    }
+//    public List<Venue> getVenues() {
+//        return venues;
+//    }
+//
+//    public void setVenues(List<Venue> venues) {
+//        this.venues = venues;
+//    }
 
 
 }

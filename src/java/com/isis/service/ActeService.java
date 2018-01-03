@@ -2,7 +2,6 @@ package com.isis.service;
 
 import com.isis.model.Acte;
 import com.isis.model.Ccam;
-import com.isis.model.Patient;
 import com.isis.model.Venue;
 import java.sql.Timestamp;
 import java.util.List;
@@ -40,9 +39,9 @@ public class ActeService {
         Acte res = em.find(Acte.class, id);
         return res;
     }
-
-    public List<Acte> getByIEP(int iep) {
-        TypedQuery<Acte> query = em.createQuery("SELECT a FROM Acte a JOIN a.patient p WHERE p.iep = :iep", Acte.class).setParameter("iep", iep);
+    
+    public List<Acte> getByVenue(Venue v) {
+        TypedQuery<Acte> query =  em.createQuery("SELECT a FROM Acte a WHERE a.venue = :venue",Acte.class).setParameter("venue", v);
         List<Acte> res = query.getResultList();
         return res;
     }
@@ -52,7 +51,7 @@ public class ActeService {
         List<Acte> res = query.getResultList();
         return res;
     }
-    
+
     //UPDATE
     public void updateActe(Acte cr) {
         em.getTransaction().begin();

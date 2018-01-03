@@ -66,6 +66,13 @@ public class RestController {
     }
     
     @GET
+    @Path("venues")
+    @Produces("application/json")
+    public List<Venue> getAllVenues() {
+        return venueService.getAll();
+    }
+    
+    @GET
     @Path("patients/{ipp}/venues")
     @Produces("application/json")
     public List<Venue> getVenues(@PathParam("ipp") int ipp) {
@@ -81,25 +88,26 @@ public class RestController {
         return venueService.getByIEP(iep);
     }
     
+    @GET
+    @Path("actes")
+    @Produces("application/json")
+    public List<Acte> getAllActes() {
+        return acteService.getAll();
+    }
     
-//    @GET
-//    @Path("patients/{ipp}/{iep}")
-//    @Produces("application/json")
-//    public Patient getVenue(@PathParam("ipp") int ipp, @PathParam("iep") int iep) {
-//        return patientService.getByIEP(iep);
-//    }
-    
-//    @GET
-//    @Path("patients/{ipp}/{iep}/actes")
-//    @Produces("application/json")
-//    public List<Acte> getPatientActes(@PathParam("ipp") int ipp, @PathParam("iep") int iep) {
-//        return acteService.getByIEP(iep);
-//    }
+    @GET
+    @Path("patients/{ipp}/venues/{iep}/actes")
+    @Produces("application/json")
+    public List<Acte> getPatientActes(@PathParam("ipp") int ipp, @PathParam("iep") int iep) {
+        Venue v = new Venue();
+        v.setIep(iep);
+        return acteService.getByVenue(v);
+    }
     
     @GET
     @Path("patients/{ipp}/{iep}/actes/{id}")
     @Produces("application/json")
-    public Acte getActeById(@PathParam("iep") int iep, @PathParam("id") int id) {
+    public Acte getActeById(@PathParam("ipp") int ipp, @PathParam("iep") int iep, @PathParam("id") int id) {
         return acteService.getById(id);
     }
     

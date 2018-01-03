@@ -56,7 +56,7 @@ public class VenueService {
     
     public void removeAll(){
         em.getTransaction().begin();
-        em.createQuery("DELETE FROM Patient").executeUpdate();
+        em.createQuery("DELETE FROM Venue").executeUpdate();
         em.getTransaction().commit();
     }
 }

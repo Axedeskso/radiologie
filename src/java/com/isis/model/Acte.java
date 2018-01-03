@@ -1,5 +1,6 @@
 package com.isis.model;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -15,12 +16,12 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "ACTE")
-public class Acte {
+public class Acte implements Serializable {
 
     @Id
-    @Column(name = "id")
+    @Column
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int iDActe;
+    private int id;
 
     @ManyToOne(cascade = CascadeType.ALL)
     private Venue venue;
@@ -28,10 +29,10 @@ public class Acte {
     @OneToMany
     private List<Image> images;
     
-    @Column(name = "date")
+    @Column
     private Timestamp date;
 
-    @Column(name = "heure")
+    @Column
     private Timestamp heure;
 
     @Column
@@ -49,11 +50,11 @@ public class Acte {
     }
 
     public int getiDActe() {
-        return iDActe;
+        return id;
     }
 
-    public void setiDActe(int iDActe) {
-        this.iDActe = iDActe;
+    public void setiDActe(int id) {
+        this.id = id;
     }
 
     public Venue getVenue() {
@@ -63,8 +64,6 @@ public class Acte {
     public void setVenue(Venue venue) {
         this.venue = venue;
     }
-
-    
 
     public List<Image> getImages() {
         return images;

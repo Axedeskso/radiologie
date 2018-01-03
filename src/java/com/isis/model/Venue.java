@@ -1,9 +1,8 @@
 package com.isis.model;
 
-import java.sql.Timestamp;
+import java.io.Serializable;
 import java.util.List;
 import javax.persistence.CascadeType;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,7 +14,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "VENUE")
-public class Venue {
+public class Venue implements Serializable {
 
     @Id
     @Column
@@ -59,6 +58,4 @@ public class Venue {
     public void setActes(List<Acte> actes) {
         this.actes = actes;
     }
-
-
 }

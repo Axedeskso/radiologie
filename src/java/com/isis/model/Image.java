@@ -1,5 +1,6 @@
 package com.isis.model;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 
 import javax.persistence.Column;
@@ -7,14 +8,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 
 @Entity
-public class Image {
+public class Image implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int iDImage;
+    private int id;
 
     @Column
     private Timestamp date;
@@ -27,7 +27,7 @@ public class Image {
     
     @Column
     private Modalite modalite;
-// CONSTRUCTOR
+
     public Image() {
         super();
     }
@@ -41,11 +41,11 @@ public class Image {
 
 // GETTER SETTER
     public int getiDImage() {
-        return iDImage;
+        return id;
     }
 
-    public void setiDImage(int iDImage) {
-        this.iDImage = iDImage;
+    public void setiDImage(int id) {
+        this.id = id;
     }
 
     public Timestamp getDate() {
@@ -72,4 +72,3 @@ public class Image {
         this.image = image;
     }
 }
-
