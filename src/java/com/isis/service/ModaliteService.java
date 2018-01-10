@@ -66,6 +66,7 @@ public class ModaliteService {
         em.getTransaction().commit();
     }
     
+    
     public void removeAll(){
         em.getTransaction().begin();
         em.createQuery("DELETE FROM Modalite").executeUpdate();

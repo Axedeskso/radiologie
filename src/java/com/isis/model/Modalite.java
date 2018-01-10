@@ -16,9 +16,6 @@ public class Modalite implements Serializable {
     @Column
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-
-//        @Column 
-//        private String code;
     @Column
     private String nom;
     @Column

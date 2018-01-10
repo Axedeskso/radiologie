@@ -118,21 +118,8 @@ public class RestController {
         return imageService.getAll();
     }
     
-//    @GET
-//    @Path("patients/{ipp}/{iep}/actes/{id}/images")
-//    @Produces("application/json")
-//    public List<Image> getAllImageByActe(@PathParam("id") int id) {
-//        return imageService.getAll();
-//    }
-//    
-//    @GET
-//    @Path("patients/{ipp}/{iep}/actes/{idA}/images/{idI}")
-//    @Produces("application/json")
-//    public Image getImageById(@PathParam("idI") int idI) {
-//        return imageService.getById(idI);
-//    }
     
-
+    
     @DELETE
     @Path("patients/{ipp}/{iep}/actes/{id}")
     public Response removeActe(@PathParam("iep") int iep, @PathParam("id") int id){
@@ -168,7 +155,7 @@ public class RestController {
         ccamService.removeCcam(id);
         return Response.status(200).build();
     }
-    
+
     //MODALITE
     @GET
     @Path("modalites")
@@ -181,8 +168,9 @@ public class RestController {
     @Path("modalites")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces("application/json")
-    public void newModalite(Modalite m) {
+    public Modalite newModalite(Modalite m) {
         modaliteService.newModalite(m);
+        return m;
     }
     
     @POST

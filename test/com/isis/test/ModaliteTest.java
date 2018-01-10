@@ -73,6 +73,13 @@ public class ModaliteTest {
         Modalite q = serv.getByName("CT");
         assert(!res.isEmpty());
         assert(res.size() == 5);
+        
+        serv.removeAll();
+        
+        m = serv.newModalite("CT", "ISIS", "/resources/isis");
+        Modalite m1 = serv.newModalite("CP", "ISIS", "/resources/isis");
+        serv.remove(m.getId());
+        assert(!res.isEmpty());
     }
 }
     
